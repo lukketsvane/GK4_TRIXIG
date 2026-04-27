@@ -65,6 +65,8 @@ Trixig+ må kjennast som TRIXIG. Det betyr disiplin på tre dimensjonar:
 
 **Detalj-DNA.** Skrifttype er IKEAs eigen Verdana-derivative for produkt­merking. Logo-plassering på underdelen av grepet, ved siden av stroppfestet, debossa utan paint fill. Modellbetegning "TRIXIG+" debossa, ikkje malt. Inga nye fargar, ingen nye fontar, ingen nye geometriske element.
 
+**Brand-mark som ber semantikk.** Sjå `Brandmark_TrixigPlus.md` for forslag der TRIXIG+-ordmerket har Torx-stjerne innfelt i T-stammen, Pozidriv-kryss i G-opninga, og fire prikkar i plus-symbolet (refererer til status-LED-stripa). Inspirert av referansebilete i `referanse/` (dekonstruert IKEA-logo) der typografi har innebygd produkt-semantikk. Forslaget skal under verdiordet *truverdig* — typografi som *gjer* det produktet er, ikkje berre nemner det.
+
 Dette er konservativ tilpassing, og det er meininga. Trixig+ er ikkje eit nytt produkt; han er ein revisjon. Brand-arbeidet er å la han kjennast som ein revisjon, ikkje som ein avgreining.
 
 ---

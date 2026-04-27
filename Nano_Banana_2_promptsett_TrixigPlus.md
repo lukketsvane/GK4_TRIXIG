@@ -102,6 +102,12 @@ Lim denne preambelen først. Deretter følg ein av promptane under.
 
 ---
 
+## 13. Brand-mark — TRIXIG+ wordmark debossa i ABS
+
+> Subject: extreme close-up of the TRIXIG+ wordmark debossed directly into the matte black ABS housing of a Trixig+ screwdriver. Frame fills with the wordmark and a few centimeters of surrounding ABS texture. The wordmark reads "TRIXIG+" in a bold geometric grotesque (Verdana Bold or Akzidenz Grotesk Bold equivalent), 12 mm tall, debossed approximately 0.4 mm below the surface. The T has a small Torx six-point star integrated into the vertical stem, the G has a tiny Pozidriv cross integrated into the inner curve where the letter closes, and the plus sign has four small dots — one in each arm — referencing the four-dot status LED strip elsewhere on the product. No paint fill, no color: the lettering is visible only through the play of light on the depressed surface. Side light from upper-left grazes across the surface, revealing the depth of the debossing and the fine texture of the ABS. Photorealistic, almost forensic. Aspect ratio 16:9.
+
+---
+
 ## Snarlegg — kompakt prompt-tabell for kopiering
 
 | # | Skot | Aspekt | Fokus |
@@ -118,6 +124,7 @@ Lim denne preambelen først. Deretter følg ein av promptane under.
 | 10 | Makro material | 1:1 | ABS-tekstur + ISO-merke |
 | 11 | Før/etter | 16:9 | Trixig vs Trixig+ |
 | 12 | Identitet | 3:2 | Trixig+ i IKEA-stille |
+| 13 | Brand-mark | 16:9 | TRIXIG+ wordmark debossa, Torx-T og Pozi-G |
 
 ---
 
