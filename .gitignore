@@ -1,0 +1,29 @@
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+._*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Office temp
+~$*.docx
+~$*.pptx
+~$*.xlsx
+*.tmp
+
+# CAD temp
+*.f3d.bak
+*.bak
+
+# Reg-fil-loggar
+*.reg.bak

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<title>GK4 — TRIXIG — Designanalyse og redesign</title>
+<style>
+  :root {
+    --bg: #fafaf7;
+    --ink: #1a1a1a;
+    --accent: #c8442e;
+    --accent-soft: #f3d3cb;
+    --grey: #777;
+    --rule: #e0ddd6;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .deck { display: flex; flex-direction: column; gap: 24px; padding: 24px; }
+  .slide {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-width: 1280px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid var(--rule);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    padding: 56px 72px;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .slide.cover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    color: white;
+  }
+  .slide.cover h1 { color: white; }
+  .slide.cover .accent-bar { background: var(--accent); }
+  .slide-num {
+    position: absolute; top: 20px; right: 32px;
+    color: var(--grey); font-size: 11px; letter-spacing: 0.1em;
+  }
+  .slide-meta {
+    position: absolute; bottom: 18px; left: 32px;
+    color: var(--grey); font-size: 11px; letter-spacing: 0.05em;
+  }
+  .accent-bar {
+    width: 64px; height: 4px; background: var(--accent);
+    margin-bottom: 28px;
+  }
+  h1 {
+    font-size: 56px; font-weight: 300;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 12px 0;
+  }
+  h1 strong { font-weight: 700; }
+  h2 {
+    font-size: 36px; font-weight: 600;
+    margin: 0 0 18px 0; letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 20px; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.04em;
+    text-transform: uppercase; margin: 0 0 8px 0;
+  }
+  p { font-size: 18px; line-height: 1.5; color: #2a2a2a; margin: 0 0 12px 0; }
+  ul { font-size: 18px; line-height: 1.5; padding-left: 22px; margin: 0; }
+  li { margin-bottom: 8px; }
+  .lede { font-size: 28px; line-height: 1.35; font-weight: 300; }
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+  .threecol { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
+  .stat {
+    font-size: 64px; font-weight: 200;
+    line-height: 1; color: var(--accent);
+  }
+  .stat-label {
+    font-size: 14px; color: var(--grey);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-top: 6px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 8px; }
+  th { text-align: left; padding: 8px 6px; border-bottom: 2px solid var(--ink); font-weight: 600; }
+  td { padding: 8px 6px; border-bottom: 1px solid var(--rule); }
+  .pill {
+    display: inline-block; padding: 2px 10px;
+    border-radius: 999px; font-size: 12px; font-weight: 600;
+    background: var(--accent-soft); color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .quote {
+    font-size: 32px; line-height: 1.35; font-weight: 300;
+    color: var(--ink); border-left: 4px solid var(--accent);
+    padding-left: 28px; margin: 32px 0;
+    font-style: italic;
+  }
+  .footnote { font-size: 13px; color: var(--grey); margin-top: 20px; }
+  .grid-3b {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px; margin-top: 16px;
+  }
+  .grid-3b .card {
+    background: var(--accent-soft);
+    padding: 20px; border-radius: 6px;
+  }
+  .grid-3b .card h3 { color: var(--accent); }
+  .grid-3b .card p { font-size: 15px; }
+  .scoreboard {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 8px; font-size: 15px;
+  }
+  .scoreboard .col-h { font-weight: 700; color: var(--ink); border-bottom: 2px solid var(--ink); padding: 8px 4px; }
+  .scoreboard .cell { padding: 8px 4px; border-bottom: 1px solid var(--rule); }
+  .scoreboard .winner { color: var(--accent); font-weight: 700; }
+  .controls {
+    position: fixed; top: 12px; right: 12px;
+    background: white; border: 1px solid var(--rule);
+    padding: 8px 12px; border-radius: 4px;
+    font-size: 12px; color: var(--grey);
+    z-index: 100;
+  }
+  .controls button {
+    background: white; border: 1px solid var(--rule);
+    padding: 4px 10px; cursor: pointer;
+    font-size: 12px;
+  }
+  @media print {
+    .controls { display: none; }
+    .deck { gap: 0; padding: 0; }
+    .slide { box-shadow: none; border: none; max-width: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <span>17 slides &middot; trykk </span><button onclick="window.print()">Skriv ut / lagre PDF</button>
+</div>
+
+<div class="deck">
+
+<!-- 1 — Cover -->
+<section class="slide cover">
+  <div class="accent-bar"></div>
+  <h1>GK4 Designmetodikk<br><strong>TRIXIG</strong></h1>
+  <p style="font-size: 22px; font-weight: 300; opacity: 0.85;">Designanalyse og redesignforslag for IKEAs elektriske skrutrekker (3,6 V Li-ion)</p>
+  <div class="slide-meta" style="color: rgba(255,255,255,0.6);">[Studentnavn] &middot; April 2026 &middot; AHO</div>
+  <div class="slide-num" style="color: rgba(255,255,255,0.4);">01 / 17</div>
+</section>
+
+<!-- 2 — Problemstilling -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Problemstilling</h3>
+  <h2>Hva taler TRIXIG om seg selv — og lytter brukeren?</h2>
+  <p class="lede">Hvordan kommuniserer TRIXIG sin tilsiktede bruk gjennom form, hvilke avvik finnes mellom det formen lover og det brukeren får, og hvordan kan produktet forbedres uten å bryte med IKEAs designspråk eller prispunkt?</p>
+  <div class="footnote">Tre delspørsmål: semantikk &middot; ergonomi &middot; teknisk konstruksjon</div>
+  <div class="slide-num">02 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Problemstilling</div>
+</section>
+
+<!-- 3 — Metode -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Metode</h3>
+  <h2>Fire spor, ett produkt</h2>
+  <div class="twocol">
+    <div>
+      <p><strong>3B-analyse</strong> &middot; Bruker, Bruksituasjon, Bruksmåte (Skulberg, 2022)</p>
+      <p><strong>Demonteringsanalyse</strong> &middot; teardown med dokumentasjon av komponenter, materialer og samlingslogikk</p>
+    </div>
+    <div>
+      <p><strong>Produktsemantikk</strong> &middot; affordances og signifiers (Norman, 2013; Krippendorff, 2006)</p>
+      <p><strong>Kontekstuell sammenligning</strong> &middot; fysiske brytere vs. berøringsskjerm i bil</p>
+    </div>
+  </div>
+  <div class="slide-num">03 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Metode</div>
+</section>
+
+<!-- 4 — Produktdata -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Produktdata</h3>
+  <h2>Hvem er TRIXIG?</h2>
+  <div class="threecol">
+    <div>
+      <div class="stat">5 Nm</div>
+      <div class="stat-label">Maks dreiemoment</div>
+    </div>
+    <div>
+      <div class="stat">200</div>
+      <div class="stat-label">o/min, tomgang</div>
+    </div>
+    <div>
+      <div class="stat">3,6 V</div>
+      <div class="stat-label">Li-ion, 1,5 Ah</div>
+    </div>
+    <div>
+      <div class="stat">350 g</div>
+      <div class="stat-label">Vekt</div>
+    </div>
+    <div>
+      <div class="stat">USB-C</div>
+      <div class="stat-label">Ladeport (kabel ekskl.)</div>
+    </div>
+    <div>
+      <div class="stat">199,–</div>
+      <div class="stat-label">NOK, anslått pris</div>
+    </div>
+  </div>
+  <div class="footnote">Art.nr. 305.469.09 &middot; lansert 2024 &middot; del av IKEAs verktøyserie TRIXIG</div>
+  <div class="slide-num">04 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Produktdata</div>
+</section>
+
+<!-- 5 — 3B Analyse oversikt -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>3B-analyse</h3>
+  <h2>Bruker &middot; Bruksituasjon &middot; Bruksmåte</h2>
+  <div class="grid-3b">
+    <div class="card">
+      <h3>Bruker</h3>
+      <p><strong>Primær:</strong> ung voksen, 20–40, første hjem.</p>
+      <p><strong>Sekundær:</strong> kjøpere på vegne (foreldre, hytteeier).</p>
+      <p>Lav forkunnskap, høy estetisk sensibilitet, IKEA-loyal.</p>
+    </div>
+    <div class="card">
+      <h3>Bruksituasjon</h3>
+      <p>Hjemmet — gulvet, soverommet, gangen.</p>
+      <p>Dårlig belysning (derfor LED).</p>
+      <p>Korte intensive økter, lange perioder uten bruk.</p>
+    </div>
+    <div class="card">
+      <h3>Bruksmåte</h3>
+      <p><strong>Frekvens:</strong> 1–3 ganger i året.</p>
+      <p><strong>Sekvens:</strong> hent, sett bits, plasser, trykk, slipp.</p>
+      <p>Eneste interaktive valg: rotasjonsretning.</p>
+    </div>
+  </div>
+  <div class="slide-num">05 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; 3B-analyse</div>
+</section>
+
+<!-- 6 — Demonteringsfunn -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Demonteringsanalyse</h3>
+  <h2>Hva fant vi inni?</h2>
+  <div class="twocol">
+    <div>
+      <p><span class="pill">12</span> &nbsp;hovedkomponenter</p>
+      <p><span class="pill">6</span> &nbsp;selvskruer holder huset sammen</p>
+      <p><span class="pill">1</span> &nbsp;Li-ion-celle, loddet til PCB</p>
+      <p><span class="pill">2</span> &nbsp;ABS-skall, ingen gummioverstøp</p>
+    </div>
+    <div>
+      <p><strong>Kritisk funn:</strong></p>
+      <p style="font-size: 22px; line-height: 1.4;">Batteriet er ikke utskiftbart. Når cellen dør (typisk 5–10 år), regnes hele produktet som forbrukt.</p>
+      <p style="color: var(--accent); font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em;">EUs batteriforordning 2023/1542 → utskiftbart batteri lovpålagt i EU 2027</p>
+    </div>
+  </div>
+  <div class="slide-num">06 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Demontering</div>
+</section>
+
+<!-- 7 — Demonteringsbilder -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Demonteringsanalyse</h3>
+  <h2>Komponentene fotografert</h2>
+  <div class="twocol" style="height: 70%;">
+    <div style="background: #f0eee8; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+      <span style="color: var(--grey); font-size: 14px;">[Bilde: Trixig demontert.jpeg]</span>
+    </div>
+    <div style="background: #f0eee8; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+      <span style="color: var(--grey); font-size: 14px;">[Bilde: Trixig batteriinnfesting.jpeg]</span>
+    </div>
+  </div>
+  <div class="footnote">Selvskruer (6 stk) &middot; PCB med loddet 18650-celle &middot; DC-motor med planetgir &middot; POM-avtrekker med returfjær &middot; gråblå retningsbryter</div>
+  <div class="slide-num">07 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Demontering</div>
+</section>
+
+<!-- 8 — Semantikk -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Produktsemantikk</h3>
+  <h2>Det formen sier</h2>
+  <div class="quote">«Du trenger ikke verksted-erfaring for å bruke meg.»</div>
+  <p>Den myke 110°-vinkelen plasserer TRIXIG nær <em>hverdagsobjekter</em> som hårfønere og barberhøvler — ikke nær sleggene og motorsagene. Avtrekkeren er en sterk signifier (kontrastfarge, riktig sokkelvinkel). Bitsfestet er en sterk signifier (synlig magnet, konisk innløp).</p>
+  <p style="color: var(--accent); font-weight: 600;">Den symmetriske retningsbryteren er en svak signifier — ingen ikoner, ingen relieff, ingen taktil forskjell mellom de to posisjonene. Resultat: den vanligste brukerfeilen er å skru gal vei.</p>
+  <div class="slide-num">08 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Semantikk</div>
+</section>
+
+<!-- 9 — Visuelt hierarki -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Produktsemantikk</h3>
+  <h2>Visuelt hierarki vs. funksjonsviktighet</h2>
+  <table>
+    <thead>
+      <tr><th>Element</th><th>Visuell vekt</th><th>Funksjonsviktighet</th><th>Samsvar?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Avtrekker</td><td>1 (høyest)</td><td>1</td><td style="color: green;">Ja</td></tr>
+      <tr><td>Bitsfeste / nese</td><td>2</td><td>2</td><td style="color: green;">Ja</td></tr>
+      <tr><td>Magnet / LED</td><td>3</td><td>4</td><td style="color: green;">Ja</td></tr>
+      <tr><td>Retningsbryter</td><td>4</td><td>3</td><td style="color: var(--accent);">Nei — undervurdert</td></tr>
+      <tr><td>USB-C / logo</td><td>5 (lavest)</td><td>5</td><td style="color: green;">Ja</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 16px;">Retningsbryteren er <strong>kritisk</strong> for korrekt bruk, men er visuelt nedprioritert. Et åpenbart redesign-grep.</p>
+  <div class="slide-num">09 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Semantikk</div>
+</section>
+
+<!-- 10 — Skjerm vs bryter -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Kontekstuell innsikt</h3>
+  <h2>Fysiske brytere slår berøringsskjerm</h2>
+  <div class="quote">Studie: fysiske brytere kan betjenes uten visuell oppmerksomhet. Berøringsskjermer øker kognitiv belastning og feilrate.</div>
+  <p>TRIXIG brukes mens brukerens blikk er bundet til skruehodet — <strong>ikke</strong> til verktøyet. Et tenkt skjermdrevet alternativ ville krevet visuelle blikkavbrudd og redusert presisjonen i selve oppgaven.</p>
+  <p style="color: var(--accent); font-weight: 600;">Konklusjon: TRIXIGs minimale, taktile grensesnitt er en designmessig <em>styrke</em>, ikke en teknologisk tilbakeholdenhet. Redesignet skal forsterke det taktile, ikke supplere med skjerm.</p>
+  <div class="slide-num">10 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Kontekst</div>
+</section>
+
+<!-- 11 — Kravspesifikasjon -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Kravspesifikasjon</h3>
+  <h2>Fra innsikt til krav</h2>
+  <div class="twocol">
+    <div>
+      <h3 style="font-size: 14px;">Funksjonelle</h3>
+      <ul style="font-size: 15px;">
+        <li>Min. 5 Nm dreiemoment</li>
+        <li>USB-C-lading &lt; 4 t</li>
+        <li>1/4'' bitsfeste</li>
+      </ul>
+      <h3 style="font-size: 14px;">Ergonomiske</h3>
+      <ul style="font-size: 15px;">
+        <li>32–38 mm grepdiameter</li>
+        <li>&lt; 400 g vekt</li>
+        <li>Trinnløs avtrekker</li>
+        <li>Asymmetrisk retningsbryter</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 14px;">Semantiske</h3>
+      <ul style="font-size: 15px;">
+        <li>Samsvar med TRIXIG-serien</li>
+        <li>«Trygt og enkelt», ikke «industri»</li>
+        <li>Ingen skjerm — kun statuslys</li>
+      </ul>
+      <h3 style="font-size: 14px;">Bærekraft</h3>
+      <ul style="font-size: 15px;">
+        <li>Utskiftbart batteri (M)</li>
+        <li>Skall som kan åpnes uten skade (M)</li>
+        <li>≥ 30 % resirkulert plast</li>
+        <li>≥ 8 års levetid</li>
+      </ul>
+    </div>
+  </div>
+  <div class="slide-num">11 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Kravspes</div>
+</section>
+
+<!-- 12 — Konsept A -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Konseptretning A</h3>
+  <h2>Trixig+ — forsiktig forbedring</h2>
+  <ul>
+    <li><strong>M3-skruer</strong> erstatter selvskruer → reparerbar kapsling</li>
+    <li><strong>Utskiftbar 18650-celle</strong> i fjærholder → forlenget levetid</li>
+    <li><strong>Asymmetrisk retningsbryter</strong> med relieff-piler → tydelig semantikk</li>
+    <li><strong>Statuslysstrip</strong> 1–4 prikker → batterikommunikasjon uten skjerm</li>
+    <li><strong>30 % resirkulert ABS</strong> + ISO 11469-merking</li>
+  </ul>
+  <p style="margin-top: 24px;"><span class="pill">Lav teknisk risiko</span> &nbsp;<span class="pill">Beholder IKEA-DNA</span> &nbsp;<span class="pill">Regulatorisk fremtidssikker</span></p>
+  <div class="slide-num">12 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Konsept A</div>
+</section>
+
+<!-- 13 — Konsept B -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Konseptretning B</h3>
+  <h2>Trixig Tactil — gummi og dreiemomentkobling</h2>
+  <ul>
+    <li><strong>TPE-overstøp</strong> på grepet → bedre friksjon, opplevd kvalitet</li>
+    <li><strong>Mekanisk koblingsbryter</strong> som slipper ved overdreiemoment → unngår ødelagte skruehoder</li>
+    <li><strong>Separat lommelyktknapp</strong> — uavhengig av avtrekker</li>
+  </ul>
+  <p style="margin-top: 24px;"><span class="pill">Bedre ergonomi</span> &nbsp;<span class="pill">Reell teknisk forbedring</span></p>
+  <p style="color: var(--accent);">Men: ≈ 50 % prisøkning. Bryter med IKEAs prispunkt.</p>
+  <div class="slide-num">13 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Konsept B</div>
+</section>
+
+<!-- 14 — Konsept C -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Konseptretning C</h3>
+  <h2>Trixig Modular — verktøyet som plattform</h2>
+  <ul>
+    <li>Skrutrekkerkjernen blir <strong>en modul</strong> som kan kobles til større batteri-håndtak (drillmodus) eller automatisk bitsmagasin</li>
+    <li>Tilleggsmoduler selges separat; krysselger med resten av TRIXIG-serien</li>
+  </ul>
+  <p style="margin-top: 24px;"><span class="pill">Differensierende</span> &nbsp;<span class="pill">Åpner kryssalg</span></p>
+  <p style="color: var(--accent);">Men: Enorm kompleksitetsøkning, krever helhetlig redesign av serien, høy risiko, høy kostnad.</p>
+  <div class="slide-num">14 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Konsept C</div>
+</section>
+
+<!-- 15 — Vurdering -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Vurdering</h3>
+  <h2>Hvilket konsept vinner?</h2>
+  <div class="scoreboard">
+    <div class="col-h">Kriterium (vekt)</div>
+    <div class="col-h">A — Trixig+</div>
+    <div class="col-h">B — Tactil</div>
+    <div class="col-h">C — Modular</div>
+    <div class="cell">Brukerverdi (3)</div><div class="cell">7</div><div class="cell">9</div><div class="cell">8</div>
+    <div class="cell">Pris (3)</div><div class="cell">9</div><div class="cell">6</div><div class="cell">4</div>
+    <div class="cell">Reparerbarhet (3)</div><div class="cell">9</div><div class="cell">7</div><div class="cell">6</div>
+    <div class="cell">Semantikk (2)</div><div class="cell">8</div><div class="cell">8</div><div class="cell">6</div>
+    <div class="cell">IKEA-passende (2)</div><div class="cell">9</div><div class="cell">7</div><div class="cell">5</div>
+    <div class="cell">Lav teknisk risiko (2)</div><div class="cell">9</div><div class="cell">7</div><div class="cell">4</div>
+    <div class="cell" style="font-weight: 700;">Sum vektet</div>
+    <div class="cell winner">120</div>
+    <div class="cell">104</div>
+    <div class="cell">76</div>
+  </div>
+  <p style="margin-top: 18px; color: var(--accent); font-weight: 600;">→ Konsept A — Trixig+ velges som endelig forslag.</p>
+  <div class="slide-num">15 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Vurdering</div>
+</section>
+
+<!-- 16 — Endelig konsept -->
+<section class="slide">
+  <div class="accent-bar"></div>
+  <h3>Endelig konsept</h3>
+  <h2>Trixig+ i fem grep</h2>
+  <div class="twocol">
+    <div>
+      <p><strong>1.</strong> M3-skruer + integrerte hylser</p>
+      <p><strong>2.</strong> Utskiftbar 18650-celle (selges som «TRIXIG cell»)</p>
+      <p><strong>3.</strong> Asymmetrisk retningsbryter med relieff-piler</p>
+      <p><strong>4.</strong> Statuslysstrip i bakkant — 1–4 prikker</p>
+      <p><strong>5.</strong> ISO 11469-merking + 30 % resirkulert ABS</p>
+    </div>
+    <div>
+      <p><strong>Estimerte konsekvenser:</strong></p>
+      <p>Pris: 199,– → 219,– NOK (+10 %)</p>
+      <p>Vekt: uendret eller +5 g</p>
+      <p>Levetid: 5–10 år → 12+ år</p>
+      <p>Reparerbarhet (FR-skala): 4,5 → 8,0 / 10</p>
+      <p>Forventet reduksjon i retningsfeil: <strong>60–80 %</strong></p>
+    </div>
+  </div>
+  <div class="slide-num">16 / 17</div>
+  <div class="slide-meta">GK4 — TRIXIG &middot; Trixig+</div>
+</section>
+
+<!-- 17 — Konklusjon -->
+<section class="slide cover">
+  <div class="accent-bar"></div>
+  <h1>Konklusjon</h1>
+  <p style="font-size: 24px; font-weight: 300; opacity: 0.9; max-width: 900px; line-height: 1.4;">TRIXIG lykkes med tilgjengelighet, intuisjon og IKEA-DNA. Den feiler på batteri, retningssemantikk og reparerbarhet. <strong>Trixig+</strong> løser alle tre med begrenset prispåslag — og forsvarer det taktile uttrykket som studien om bilbrytere viser at vi trenger mer av, ikke mindre.</p>
+  <div class="slide-meta" style="color: rgba(255,255,255,0.6);">Takk &middot; spørsmål?</div>
+  <div class="slide-num" style="color: rgba(255,255,255,0.4);">17 / 17</div>
+</section>
+
+</div>
+</body>
+</html>

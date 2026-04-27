@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<title>GK4 — TRIXIG — Plansje</title>
+<style>
+  @page { size: A1; margin: 0; }
+  :root {
+    --bg: #fafaf7;
+    --ink: #111;
+    --accent: #c8442e;
+    --accent-soft: #f3d3cb;
+    --grey: #6a6a6a;
+    --rule: #d8d4c8;
+    --warm: #f0eee8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #ddd; }
+  body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--ink); }
+  .poster {
+    width: 594mm; height: 841mm;        /* A1 portrait */
+    background: var(--bg);
+    margin: 24px auto;
+    padding: 32mm 28mm;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+  /* HEADER */
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: 24px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 18px;
+  }
+  .course {
+    font-size: 14pt; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .title-block h1 {
+    font-size: 64pt; font-weight: 200;
+    margin: 0; line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  .title-block h1 strong { font-weight: 700; }
+  .title-block .sub {
+    font-size: 16pt; color: var(--grey);
+    font-weight: 300; margin-top: 8px;
+  }
+  .meta {
+    font-size: 11pt;
+    text-align: right; color: var(--grey);
+    line-height: 1.4;
+  }
+  .meta strong { color: var(--ink); }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 18px;
+    margin-top: 22px;
+  }
+  .panel {
+    border: 1px solid var(--rule);
+    background: white;
+    padding: 16px 18px;
+    border-radius: 4px;
+  }
+  .panel h2 {
+    font-size: 11pt; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 10px 0;
+  }
+  .panel h3 {
+    font-size: 18pt; font-weight: 300;
+    margin: 0 0 8px 0; line-height: 1.1;
+  }
+  .panel p { font-size: 9pt; line-height: 1.45; margin: 0 0 6px 0; }
+  .panel ul { font-size: 9pt; line-height: 1.45; padding-left: 14px; margin: 0; }
+  .panel li { margin-bottom: 3px; }
+
+  /* SPECIFIC PANELS */
+  .panel-hero {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    background: white;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 22px;
+  }
+  .panel-stats { grid-column: 2 / 4; grid-row: 1 / 2; }
+  .panel-3b    { grid-column: 2 / 4; grid-row: 2 / 3; }
+  .panel-tear  { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .panel-sem   { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .panel-req   { grid-column: 3 / 4; grid-row: 3 / 4; }
+  .panel-conc  {
+    grid-column: 1 / 4; grid-row: 4 / 5;
+    background: var(--ink); color: white;
+  }
+  .panel-conc h2 { color: var(--accent-soft); }
+  .panel-conc h3 { color: white; }
+  .panel-conc p { color: rgba(255,255,255,0.9); }
+
+  /* HERO ART */
+  .hero-art {
+    flex: 1; display: flex;
+    align-items: center; justify-content: center;
+    margin: 12px 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px; margin-top: 6px;
+  }
+  .stat { text-align: center; padding: 8px 4px; background: var(--warm); border-radius: 3px; }
+  .stat .num {
+    font-size: 24pt; font-weight: 200;
+    color: var(--accent); line-height: 1;
+  }
+  .stat .lbl {
+    font-size: 7pt; color: var(--grey);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .threecol-3b {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
+  }
+  .threecol-3b .card {
+    background: var(--accent-soft);
+    padding: 12px 14px; border-radius: 3px;
+  }
+  .threecol-3b h4 {
+    font-size: 11pt; font-weight: 700;
+    color: var(--accent); margin: 0 0 6px 0;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .threecol-3b p { font-size: 8.5pt; line-height: 1.4; margin: 0 0 4px 0; }
+
+  /* TEAR */
+  .tear-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px;
+    font-size: 8.5pt;
+  }
+  .tear-list .k { color: var(--grey); }
+  .tear-list .v { font-weight: 600; }
+
+  /* SEM */
+  .sem-table { font-size: 8pt; width: 100%; border-collapse: collapse; }
+  .sem-table th { text-align: left; padding: 4px 2px; font-weight: 700; border-bottom: 1px solid var(--ink); }
+  .sem-table td { padding: 3px 2px; border-bottom: 1px solid var(--rule); }
+
+  /* REQ */
+  .req-cat { margin-bottom: 8px; }
+  .req-cat .cat-title {
+    font-size: 9pt; font-weight: 700;
+    color: var(--accent); margin: 0 0 3px 0;
+  }
+  .req-cat p { font-size: 8.5pt; margin: 0; line-height: 1.4; }
+
+  /* CONC */
+  .panel-conc { padding: 22px 26px; }
+  .conc-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 18px;
+    align-items: start;
+  }
+  .conc-grid .big h3 { font-size: 22pt; line-height: 1.15; }
+  .conc-grid .big p { font-size: 10pt; line-height: 1.5; }
+  .conc-grid .num-card .num {
+    font-size: 28pt; font-weight: 200;
+    color: var(--accent-soft); line-height: 1;
+  }
+  .conc-grid .num-card .lbl {
+    font-size: 8pt; color: rgba(255,255,255,0.7);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* FOOTER */
+  .footer {
+    position: absolute;
+    bottom: 16mm; left: 28mm; right: 28mm;
+    display: flex; justify-content: space-between;
+    font-size: 8pt; color: var(--grey);
+    letter-spacing: 0.05em;
+    padding-top: 6px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .controls {
+    position: fixed; top: 12px; right: 12px;
+    background: white; border: 1px solid #ccc;
+    padding: 8px 14px; border-radius: 4px;
+    font-size: 12px; color: #555;
+    z-index: 100; font-family: sans-serif;
+  }
+  .controls button { padding: 4px 10px; cursor: pointer; }
+  @media print { .controls { display: none; } body { background: white; } .poster { box-shadow: none; margin: 0; } }
+
+  /* SVG-tegning av Trixig (forenklet) */
+  .trixig-svg { width: 100%; max-width: 280px; height: auto; }
+</style>
+</head>
+<body>
+
+<div class="controls">
+  A1 portrait &middot; <button onclick="window.print()">Skriv ut / lagre PDF</button>
+</div>
+
+<div class="poster">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="course">GK4 &middot; Designmetodikk &middot; AHO</div>
+    <div class="title-block">
+      <h1>TRIXIG <strong>+</strong></h1>
+      <div class="sub">Designanalyse og redesignforslag for IKEAs elektriske skrutrekker, 3,6 V Li-ion</div>
+    </div>
+    <div class="meta">
+      [Studentnavn]<br>
+      Veileder: <strong>Harald Skulberg</strong><br>
+      April 2026
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <!-- HERO -->
+    <div class="panel panel-hero">
+      <div>
+        <h2>Produktet</h2>
+        <h3>En 5 Nm-skrutrekker for nye hjem.</h3>
+        <p>TRIXIG (3,6 V) er IKEAs enkleste motoriserte verktøy. Innebygd Li-ion-celle, USB-C-lading, magnet for bits og LED i nesen. Ingen skjerm, ingen smart-app, ingen Bluetooth — kun ett trykk og én retning.</p>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 280 360" class="trixig-svg" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bakplate (skall) -->
+          <path d="M 80 30 Q 70 30 65 50 L 60 130
+                   Q 60 145 70 150 L 75 200
+                   Q 70 220 90 240 L 130 320
+                   Q 140 340 165 340 L 195 340
+                   Q 220 340 220 320 L 220 270
+                   Q 220 250 200 245 L 175 240
+                   Q 165 235 165 220 L 165 60
+                   Q 165 30 145 30 L 80 30 Z"
+                fill="#2a2a2a" stroke="#111" stroke-width="1.5"/>
+          <!-- Bitsfeste -->
+          <rect x="100" y="14" width="35" height="20" fill="#888" stroke="#111" stroke-width="1"/>
+          <rect x="105" y="0" width="25" height="14" fill="#444" stroke="#111" stroke-width="1"/>
+          <!-- LED -->
+          <circle cx="142" cy="55" r="4" fill="#fffbe0" stroke="#111"/>
+          <!-- Magnet -->
+          <rect x="98" y="48" width="14" height="6" fill="#aaa" stroke="#111" stroke-width="0.7"/>
+          <!-- Avtrekker -->
+          <path d="M 130 220 Q 135 215 145 215 L 165 215 L 165 245 L 145 245 Q 135 245 130 240 Z"
+                fill="#bcbcbc" stroke="#111" stroke-width="1"/>
+          <!-- Retningsbryter (asymmetrisk!) -->
+          <rect x="55" y="180" width="30" height="22" rx="3" fill="#999" stroke="#111" stroke-width="1"/>
+          <path d="M 60 191 L 67 187 L 67 195 Z" fill="#222"/>
+          <path d="M 78 187 L 78 195 L 73 191 Z" fill="#222"/>
+          <!-- USB-C -->
+          <rect x="190" y="320" width="14" height="5" fill="#444" stroke="#111" stroke-width="0.5"/>
+          <!-- Stroppløkke -->
+          <ellipse cx="220" cy="328" rx="6" ry="4" fill="none" stroke="#777" stroke-width="1"/>
+          <!-- Statuslysstripe -->
+          <circle cx="100" cy="285" r="2" fill="#c8442e"/>
+          <circle cx="110" cy="285" r="2" fill="#c8442e"/>
+          <circle cx="120" cy="285" r="2" fill="#c8442e"/>
+          <circle cx="130" cy="285" r="2" fill="#eee" stroke="#aaa"/>
+          <!-- Logo -->
+          <text x="178" y="295" font-family="Arial" font-size="9" fill="#888">TRIXIG+</text>
+          <!-- Annoteringer -->
+          <line x1="135" y1="0" x2="200" y2="-2" stroke="#c8442e" stroke-width="0.7"/>
+          <text x="205" y="6" font-family="Arial" font-size="8" fill="#c8442e">1/4'' bitsfeste</text>
+          <line x1="55" y1="190" x2="14" y2="190" stroke="#c8442e" stroke-width="0.7"/>
+          <text x="0" y="186" font-family="Arial" font-size="8" fill="#c8442e">Asym. retning</text>
+          <line x1="55" y1="195" x2="14" y2="200" stroke="#c8442e" stroke-width="0"/>
+          <line x1="220" y1="280" x2="265" y2="278" stroke="#c8442e" stroke-width="0.7"/>
+          <text x="232" y="276" font-family="Arial" font-size="8" fill="#c8442e">Statuslys</text>
+          <line x1="220" y1="290" x2="265" y2="295" stroke="#c8442e" stroke-width="0"/>
+          <line x1="160" y1="230" x2="220" y2="232" stroke="#c8442e" stroke-width="0.7"/>
+          <text x="222" y="234" font-family="Arial" font-size="8" fill="#c8442e">Trinnløs trigger</text>
+        </svg>
+      </div>
+      <div>
+        <p style="color: var(--accent); font-size: 9pt; font-weight: 600;">Trixig+ er en revisjon som retter tre ting: ikke-utskiftbart batteri, uklar retningssemantikk, ikke-reparerbar konstruksjon. Resten beholdes.</p>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="panel panel-stats">
+      <h2>Produktdata</h2>
+      <div class="stats-grid">
+        <div class="stat"><div class="num">5 Nm</div><div class="lbl">Maks moment</div></div>
+        <div class="stat"><div class="num">200</div><div class="lbl">o/min tomgang</div></div>
+        <div class="stat"><div class="num">3,6 V</div><div class="lbl">Li-ion 1,5 Ah</div></div>
+        <div class="stat"><div class="num">350 g</div><div class="lbl">Vekt</div></div>
+        <div class="stat"><div class="num">USB-C</div><div class="lbl">Lading &lt;5 t</div></div>
+        <div class="stat"><div class="num">199,–</div><div class="lbl">NOK (anslag)</div></div>
+      </div>
+    </div>
+
+    <!-- 3B -->
+    <div class="panel panel-3b">
+      <h2>3B-analyse</h2>
+      <div class="threecol-3b">
+        <div class="card">
+          <h4>Bruker</h4>
+          <p>Ung voksen, 20–40 år. Første hjem.</p>
+          <p>Lav forkunnskap, høy estetisk sensibilitet.</p>
+          <p>Sek.: kjøp på vegne av andre.</p>
+        </div>
+        <div class="card">
+          <h4>Bruksituasjon</h4>
+          <p>Hjemmet — gulv, soverom, gang.</p>
+          <p>Dårlig belysning (LED).</p>
+          <p>Korte intensive økter, lange pauser.</p>
+        </div>
+        <div class="card">
+          <h4>Bruksmåte</h4>
+          <p>Frekvens: 1–3 ganger i året.</p>
+          <p>Sekvens: hent, sett, plasser, trykk, slipp.</p>
+          <p>Eneste valg: rotasjonsretning.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEARDOWN -->
+    <div class="panel panel-tear">
+      <h2>Demonteringsanalyse</h2>
+      <h3>12 komponenter, 6 selvskruer, 1 loddet celle.</h3>
+      <div class="tear-list">
+        <div class="k">Skall</div><div class="v">2 × ABS, sortpigmentert</div>
+        <div class="k">Avtrekker</div><div class="v">POM grå + stålfjær</div>
+        <div class="k">PCB</div><div class="v">FR4, lading + LED-driver</div>
+        <div class="k">Batteri</div><div class="v">1 × 18650 (3,6 V / 1,5 Ah)</div>
+        <div class="k">Motor</div><div class="v">DC + planetgir</div>
+        <div class="k">Bitsfeste</div><div class="v">Herdet stål, 1/4''</div>
+        <div class="k">Magnet</div><div class="v">Neodym</div>
+        <div class="k">Sammenføyning</div><div class="v">6 selvskruer i plastkrager</div>
+      </div>
+      <p style="margin-top: 8px; color: var(--accent); font-weight: 600;">Kritisk: batteriet er loddet. Når cellen dør, regnes hele produktet som forbrukt. EUs batteriforordning 2023/1542 →&nbsp;utskiftbart batteri lovpålagt 2027.</p>
+    </div>
+
+    <!-- SEMANTIKK -->
+    <div class="panel panel-sem">
+      <h2>Produktsemantikk</h2>
+      <h3>Det formen sier — og ikke sier.</h3>
+      <p>Den myke 110°-vinkelen plasserer TRIXIG nær <em>hverdagsobjekter</em>, ikke nær industri-verktøy. Avtrekkeren er en sterk signifier. Bitsfestet er en sterk signifier.</p>
+      <table class="sem-table" style="margin-top: 6px;">
+        <tr><th>Element</th><th>Visuelt</th><th>Funksjon</th></tr>
+        <tr><td>Avtrekker</td><td>1</td><td>1 ✓</td></tr>
+        <tr><td>Bitsfeste</td><td>2</td><td>2 ✓</td></tr>
+        <tr><td>LED / magnet</td><td>3</td><td>4 ✓</td></tr>
+        <tr><td style="color: var(--accent);">Retningsbryter</td><td style="color: var(--accent);">4</td><td style="color: var(--accent);">3 ✗</td></tr>
+        <tr><td>USB / logo</td><td>5</td><td>5 ✓</td></tr>
+      </table>
+      <p style="margin-top: 6px; color: var(--accent); font-weight: 600;">Retningsbryteren er kritisk for korrekt bruk, men er visuelt nedprioritert. Et åpenbart redesign-grep.</p>
+    </div>
+
+    <!-- KRAV -->
+    <div class="panel panel-req">
+      <h2>Kravspesifikasjon</h2>
+      <h3>Fra innsikt til krav.</h3>
+      <div class="req-cat">
+        <div class="cat-title">Funksjonelle</div>
+        <p>≥5 Nm &middot; USB-C &lt;4 t &middot; 1/4'' bitsfeste &middot; over­strømsbeskyttelse</p>
+      </div>
+      <div class="req-cat">
+        <div class="cat-title">Ergonomiske</div>
+        <p>32–38 mm grep &middot; &lt;400 g &middot; trinnløs trigger &middot; <strong>asymmetrisk retning</strong></p>
+      </div>
+      <div class="req-cat">
+        <div class="cat-title">Semantiske</div>
+        <p>Samsvar med TRIXIG-serien &middot; «trygt og enkelt» &middot; ingen skjerm</p>
+      </div>
+      <div class="req-cat">
+        <div class="cat-title">Bærekraft</div>
+        <p><strong>Utskiftbart batteri</strong> &middot; reparerbar kapsling &middot; ≥30 % resirkulert plast &middot; ≥8 års levetid</p>
+      </div>
+    </div>
+
+    <!-- KONKLUSJON -->
+    <div class="panel panel-conc">
+      <h2>Endelig konsept — Trixig+</h2>
+      <div class="conc-grid">
+        <div class="big">
+          <h3>Behold formen. Fiks tre ting.</h3>
+          <p><strong>1.</strong> M3-skruer + integrerte hylser → reparerbar.<br>
+             <strong>2.</strong> Utskiftbar 18650-celle i fjærholder → forlenget levetid.<br>
+             <strong>3.</strong> Asymmetrisk retningsbryter med relieff-piler → tydelig taktil semantikk.</p>
+          <p style="color: var(--accent-soft); font-size: 9pt; margin-top: 8px;">Pluss: statuslys i bakkant (ingen skjerm), ISO 11469-merking og 30 % resirkulert ABS.</p>
+        </div>
+        <div class="num-card">
+          <div class="num">+10 %</div>
+          <div class="lbl">Pris (199 → 219 NOK)</div>
+        </div>
+        <div class="num-card">
+          <div class="num">12+ år</div>
+          <div class="lbl">Levetid (var: 5–10 år)</div>
+        </div>
+        <div class="num-card">
+          <div class="num">−70 %</div>
+          <div class="lbl">Forventet retningsfeil</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span>GK4 — Designmetodikk &middot; IKEA TRIXIG (305.469.09) &middot; AHO 2026</span>
+    <span>Metode: 3B (Skulberg, 2022) &middot; Semantikk (Krippendorff 2006, Norman 2013) &middot; Demontering &middot; Bilbryterstudie</span>
+  </div>
+
+</div>
+
+</body>
+</html>

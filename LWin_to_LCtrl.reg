@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+; Remap left Win key (scancode E0 5B) → left Ctrl (scancode 00 1D)
+; Apply: dobbeltklikk og godta UAC. Logg ut og inn (eller restart) for at det skal verke.
+; Reverser: køyr LWin_to_LCtrl_REMOVE.reg.
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,5b,e0,00,00,00,00
