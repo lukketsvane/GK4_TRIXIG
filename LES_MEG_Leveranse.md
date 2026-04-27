@@ -1,159 +1,111 @@
-# Leveranse — GK4 TRIXIG
+# GK4 V26 Modul 2 — TRIXIG redesign
 
-Dette er ei kort overlevering som forklarer kva som ligg i repoet, korleis filene er organiserte, kva som er produsert, og kva du må gjere før innlevering.
+Repo for AHO-prosjektet: redesign av IKEA TRIXIG 3,6 V elektrisk skrutrekkar. Veke 18–22, 27. april–27. mai 2026.
 
 Sist oppdatert: 27. april 2026.
 
 ---
 
-## Reint inventarium
+## Snarvegar — kva skal eg sjå på?
 
-### Kursmateriale (frå AHO) — i `kursmateriale/`-undermappe
-
-Kjør `organiser_kursmateriale.ps1` for å flytta desse filene til `kursmateriale/`-undermappe og pushe endringa til GitHub.
-
-| Fil | Innhald |
+| Du leitar etter | Opne |
 |---|---|
-| `kursmateriale/Designbrief Trixig elskrutrekker.docx` | Den offisielle designbrieffen |
-| `kursmateriale/1 Prosjektbeskrivelse GK4 Elskrutrekker.docx` | Prosjektbeskriving frå kurset |
-| `kursmateriale/2 Introduksjon om elskrutrekker Trixig.pptx` | Introduksjons-pptx |
-| `kursmateriale/5 Metodikk introduksjon NY VERSJON.ppt` | Metodikk-forelesning |
-| `kursmateriale/6 3B analyse.pdf` | 3B-rammeverket |
-| `kursmateriale/8 Kravspesifikasjon.pptx` | Kravspec-mal |
-| `kursmateriale/Workshop Produktsemantikk.pptx` | Semantikk-workshop |
-| `kursmateriale/1 Test av skjerm versus fysiske brytere i bil.docx` | Bilbryter-studie |
-| `kursmateriale/Litteraturliste GK4 V26.docx` | Pensumliste |
-| `kursmateriale/IKEA_s produktserie Trixig.url` | Snarvei til IKEA-side |
-| `kursmateriale/Trixig elskrutrekker.url` | Snarvei til IKEA-produktside |
+| Hovudrapporten | [`Rapport_GK4_Trixig.md`](Rapport_GK4_Trixig.md) |
+| Sluttpresentasjonen (17 slides) | [`Presentasjon_GK4_Trixig.html`](Presentasjon_GK4_Trixig.html) |
+| A1-plansja | [`Plansje_GK4_Trixig.html`](Plansje_GK4_Trixig.html) |
+| Konseptgjennomgang for fredag 8. mai | [`Konseptgjennomgang_8mai.md`](Konseptgjennomgang_8mai.md) |
+| Formføringsplansje for måndag 11. mai | [`Formføringsplansje_11mai.md`](Formføringsplansje_11mai.md) |
+| Prototype-byggjeplan | [`Prototypedokumentasjon.md`](Prototypedokumentasjon.md) |
+| OpenSCAD-modell | [`Trixig_plus.scad`](Trixig_plus.scad) |
 
-### Trixig-produktbilete (referanse)
+## Strategiske dokument (vedlegg / forsvar)
 
-| Fil | Innhald |
+| Du leitar etter | Opne |
 |---|---|
-| `Trixig demontert.jpeg` | Foto av demontert original |
-| `Trixig demontert perspektiv.jpeg` | Foto demontert, perspektiv |
-| `Trixig demontert perspektiv 2.jpeg` | Foto demontert, alternativt perspektiv |
-| `Trixig batteriinnfesting.jpeg` | Detaljfoto av batterifeste |
-| `1223553_PE914767_S5.jpg` | IKEA-katalogfoto |
-| `trixig-drill-li-ion__1223550_pe914770_s5.avif` | IKEA-katalogfoto |
-| `trixig-drill-li-ion__1223551_pe914768_s5.avif` | IKEA-katalogfoto |
-| `trixig-drill-li-ion__1223552_pe914769_s5.avif` | IKEA-katalogfoto |
-| `trixig-drill-li-ion__1223553_pe914767_s5.avif` | IKEA-katalogfoto |
-| `trixig-drill-li-ion__1223553_pe914767_s5 (1).avif` | Duplikat — kan slettast |
-
-### Produserte leveransar (mine, redigerbare)
-
-| Fil | Innhald | Format | Tilrådd handtering |
-|---|---|---|---|
-| `Rapport_GK4_Trixig.md` | Hovudrapport — 4 800 ord, full designanalyse og redesignforslag (Trixig+) | Markdown | Opne i Word → "Lagre som" → `.docx` |
-| `Presentasjon_GK4_Trixig.html` | 17-sliders presentasjon for sluttpresentasjon | HTML | Opne i Chrome → "Skriv ut / lagre PDF" |
-| `Plansje_GK4_Trixig.html` | A1-plansje med all hovudinnsikt | HTML (A1 portrait) | Opne i Chrome → "Skriv ut" → A1 → "Lagre som PDF" |
-| `Prototypedokumentasjon.md` | Byggjeplan for fysisk modell (P1 + P2) | Markdown | Opne i Word eller behald som .md |
-| `Trixig_plus.scad` | OpenSCAD-modell av Trixig+ | OpenSCAD | Opne i OpenSCAD for å rendra .stl |
-| `Nano_Banana_2_promptsett_TrixigPlus.md` | Konsistent promptsett for AI-rendring av Trixig+ (12 skot + stilgrunnlag) | Markdown | Lim stilgrunnlag + prompt i Nano Banana 2 |
-| `Kritikk_av_IKEA_Trixig.md` | Strategisk og produktkritikk av IKEA — balansert versjon med steelman | Markdown | Vedlegg til hovudrapport eller standalone |
-| `Slakting_av_TRIXIG.md` | Maksimalt kritisk lesing — dokumenterte feilrapportar, strukturelle skandalar | Markdown | Internt arbeidsdokument; siter selektivt i sluttpresentasjon |
-| `Produksjonskjede_TRIXIG.md` | Heilskapleg kartlegging frå råvare til avhending | Markdown | Vedlegg eller ressurs for sensurdialog |
-| `Konseptgjennomgang_8mai.md` | Manus for konseptgjennomgangen 8. mai — 12 slide-seksjonar | Markdown | Konverter til pptx eller pdf for Moodle |
-| `Formføringsplansje_11mai.md` | Innleveringa til 11. mai — tre verdiord (synleg, stille, truverdig) | Markdown | Konverter til A3 PDF for Moodle |
-| `organiser_kursmateriale.ps1` | PowerShell-script som flyttar AHO-kursmateriale til kursmateriale/ og pushar | PowerShell | Kjør éin gong |
-| `LES_MEG_Leveranse.md` | Denne fila — overlevering og fil-oversikt | Markdown | Slett etter levering |
-
-### Filer som bør flyttast eller slettast
-
-Desse ligg i repoet men høyrer ikkje strengt til prosjektet. Tilrådd handtering:
-
-| Fil | Tilråding |
-|---|---|
-| `LWin_to_LCtrl.reg` | Flytt til ein eigen `_personleg/`-mappe utanfor repoet — Windows-keyboard-remapping, ikkje prosjektrelatert |
-| `LWin_to_LCtrl_REMOVE.reg` | Same som over |
-| `push_to_github.ps1` | Behald, men flytt til `scripts/`-undermappe for rydd |
-| `push_to_github.bat` | Same som over |
-| `trixig-drill-li-ion__1223553_pe914767_s5 (1).avif` | Slett — duplikat |
-
-### Git-mappa
-
-`.git/` er normal Git-metadata. Rør ikkje.
+| Kritikk av IKEA — balansert versjon med steelman | [`Kritikk_av_IKEA_Trixig.md`](Kritikk_av_IKEA_Trixig.md) |
+| Slakting av TRIXIG — maksimalt kritisk lesing | [`Slakting_av_TRIXIG.md`](Slakting_av_TRIXIG.md) |
+| Produksjonskjeda frå råvare til avhending | [`Produksjonskjede_TRIXIG.md`](Produksjonskjede_TRIXIG.md) |
+| Nano Banana 2 promptsett for Trixig+-rendringar | [`Nano_Banana_2_promptsett_TrixigPlus.md`](Nano_Banana_2_promptsett_TrixigPlus.md) |
 
 ---
 
-## Kvifor markdown og HTML?
+## Mappestruktur
 
-Sandbox-miljøet som lagar offisielle .docx- og .pptx-filer var nede under arbeidet. Eg har derfor produsert innhaldet i format som:
+```
+GK4_TRIXIG/
+├── LES_MEG_Leveranse.md            ← du les denne
+├── organiser_repo.ps1              ← master-script for opprydding
+│
+├── Rapport_GK4_Trixig.md           ← hovudrapport (~4800 ord)
+├── Presentasjon_GK4_Trixig.html    ← 17-slide sluttpresentasjon
+├── Plansje_GK4_Trixig.html         ← A1-plansje
+├── Prototypedokumentasjon.md       ← P1 (foam) + P2 byggjeplan
+├── Trixig_plus.scad                ← parametrisk OpenSCAD-modell
+│
+├── Kritikk_av_IKEA_Trixig.md       ← strategisk kritikk + steelman
+├── Slakting_av_TRIXIG.md           ← maksimal kritikk, dokumentert
+├── Produksjonskjede_TRIXIG.md      ← forsyningskjede-kartlegging
+├── Konseptgjennomgang_8mai.md      ← 8. mai-leveranse
+├── Formføringsplansje_11mai.md     ← 11. mai-leveranse
+├── Nano_Banana_2_promptsett_TrixigPlus.md  ← AI-rendring-promptar
+│
+├── kursmateriale/                  ← AHO-kursfiler (designbrief, 3B, kravspec, …)
+├── referanse/                      ← Trixig-foto (demontert + IKEA-katalog)
+├── scripts/                        ← push_to_github + organiser_kursmateriale
+└── _arkiv/                         ← ikkje-prosjekt-filer
+```
 
-- **Markdown opnast direkte i Word** (Microsoft 365 og Word 2021+). Filtypen .md kan dobbeltklikkast i Word; deretter "Lagre som" → "Word-dokument (.docx)".
-- **HTML kan eksporterast til PDF** via nettlesarens utskriftsdialog. Dette gjev høgkvalitetsutskrift, og PDF-en er det som sensurkomitéar oftast vil ha uansett.
+For å oppretta denne strukturen frå rotmappa: kjør `organiser_repo.ps1`. Han er idempotent — trygg å kjøra fleire gonger.
 
-Dersom du absolutt treng .docx eller .pptx i originalformat:
+---
 
-1. **Word-konvertering** (1 minutt): Opne `.md`-fila i Word → Lagre som .docx.
-2. **PowerPoint-konvertering** (5–10 minutt): Opne `Presentasjon_GK4_Trixig.html` i Chrome, ta skjermbilde av kvar slide (eller bruk "Print → Save as PDF"), importer i PowerPoint som biletbasert deck.
-3. **Pandoc-rute** (om du har Pandoc): `pandoc Rapport_GK4_Trixig.md -o Rapport.docx --reference-doc=mal.docx` for full styling.
+## Tidslinje og leveransar
+
+| Dato | Leveranse | Fil(er) |
+|---|---|---|
+| **8. mai kl. 20:00** | Konseptgjennomgang Moodle | `Konseptgjennomgang_8mai.md` → eksporter til pdf/pptx |
+| **11. mai kl. 09:00** | Formføringsplansje Moodle | `Formføringsplansje_11mai.md` → eksporter til A3 pdf |
+| **25. mai kl. 20:00** | Sluttpresentasjon Moodle | `Presentasjon_GK4_Trixig.html` → eksporter til pdf |
+| **26.–27. mai** | Sluttpresentasjon + fysisk modell | Modell etter `Prototypedokumentasjon.md` |
+
+---
+
+## Konvertering markdown → docx/pptx/pdf
+
+**Markdown → Word.** Microsoft Word 2021+ og Word for Microsoft 365 opnar `.md` direkte. Dobbelklikk fila → Word opnar → "Lagre som" → "Word-dokument (.docx)".
+
+**HTML → PDF.** Opne fila i Chrome → Cmd/Ctrl-P → "Lagre som PDF". For A1-plansja: vel papirstørrelse A1 i utskriftsdialogen.
+
+**Markdown → PowerPoint.** Enklaste rute: lim manuset frå `Konseptgjennomgang_8mai.md` slide-for-slide inn i ein eksisterande pptx-mal. Eventuelt køyr Pandoc lokalt:
+```
+pandoc Konseptgjennomgang_8mai.md -o Konseptgjennomgang.pptx
+```
 
 ---
 
 ## Det du må gjere før innlevering
 
-1. **Bytt ut `[Studentnavn]` / `[Studentnamn]` i alle filer** med ditt eige namn. Stadar finst i:
-   - Forside av rapport (`Rapport_GK4_Trixig.md`)
-   - Forside og slutt av presentasjon (`Presentasjon_GK4_Trixig.html`)
-   - Header av plansje (`Plansje_GK4_Trixig.html`)
-2. **Kontrollér litteraturlista** mot kursets `Litteraturliste GK4 V26.docx` og legg til/fjern referansar.
-3. **Konvertér til .docx / .pdf / .pptx** etter rettleiinga over.
-4. **Bygg fysisk prototype** etter `Prototypedokumentasjon.md`. P1 (foam) er nok om tida er knapp.
-5. **Sett inn dei reelle Trixig-fotografia** i presentasjonen og plansjen. På slide 7 i presentasjonen står det `[Bilde: ...]`-plassholdarar — bytt dei med dei faktiske JPEG-ane som ligg i prosjektmappa.
-6. **Generér Trixig+-rendringar** med Nano Banana 2 ved hjelp av promptsettet i `Nano_Banana_2_promptsett_TrixigPlus.md`. Prioriter Hero (#1), Sideview ortografisk (#2), Eksplodert (#5) og Før/etter (#11) for plansja.
-7. **Rydd repoet** etter tilrådingane i tabellen "Filer som bør flyttast eller slettast" over.
+1. **Bytt ut `[Studentnamn]`** i alle filer med ditt eige namn. Søk i: `Rapport_GK4_Trixig.md`, `Presentasjon_GK4_Trixig.html`, `Plansje_GK4_Trixig.html`, alle nye `.md`-leveransar.
+2. **Kontrollér litteraturlista** mot `kursmateriale/Litteraturliste GK4 V26.docx`.
+3. **Konvertér markdown og HTML** til dei formata Moodle krev (sjå over).
+4. **Bygg fysisk prototype** etter `Prototypedokumentasjon.md`.
+5. **Sett inn referansebilete** i presentasjonen og plansja frå `referanse/`-mappa.
+6. **Generér Trixig+-rendringar** med Nano Banana 2 etter promptsettet.
+7. **Kjør `organiser_repo.ps1`** for å oppretta mappestruktur og pushe.
 
 ---
 
-## Innhaldsmessige avgrensingar du bør vere klar over
+## Hovudbodskap (om du blir spurd i sensur)
 
-Eg har **ikkje** kunna lese følgjande filer frå sandbox-miljøet (dei er .docx/.pptx og krev kontorlivlege-konvertering):
+> *TRIXIG er eit kompetent budsjettverktøy som lykkast med tilgjenge, intuisjon og IKEA-DNA. Det feilar på batteri (ikkje utskiftbart), retningssemantikk (uklart) og reparérbarheit (selvskruver i plast). Trixig+ rettar alle tre med +10 % pris og utan å bryte med IKEAs designspråk. Innsikta frå studien om bilbrytere brukast som forsvar for det taktile minimumsuttrykket — TRIXIG bør ikkje få ein skjerm, han bør forsterkast.*
 
-- `Designbrief Trixig elskrutrekker.docx`
-- `1 Prosjektbeskrivelse GK4 Elskrutrekker.docx`
-- `8 Kravspesifikasjon.pptx`
-- `Workshop Produktsemantikk.pptx`
-- `2 Introduksjon om elskrutrekker Trixig.pptx`
-- `5 Metodikk introduksjon NY VERSJON.ppt`
-- `Litteraturliste GK4 V26.docx`
-- `1 Test av skjerm versus fysiske brytere i bil.docx`
-
-Innhaldet i rapporten er bygd på:
-
-- 3B-analyse-PDF-en (les fullt ut)
-- Demonteringsfotografia (analysert visuelt)
-- Web-søk om TRIXIG-spesifikasjonar (frå ikea.com og manuals.plus)
-- Standard pensum og metodikk frå AHO IDE (basert på Skulberg, Krippendorff, Norman)
-
-**Eg vil sterkt råde deg til å lese gjennom rapporten** og rette eventuelle inkonsekvensar mot brifen og kravspesen før innlevering. Spesielt dersom kursmaterialet legg vekt på spesifikke konsept eller framgangsmåtar eg ikkje har dekt.
+EU-batteriforordninga 2023/1542 krev uansett at IKEA gjer dette innan februar 2027. Trixig+ er det IKEA uansett må byggja. Spørsmålet er om dei gjer det proaktivt eller under regulatorisk pålegg.
 
 ---
 
-## Strukturoversikt over rapporten
+## Innhaldsmessige avgrensingar
 
-1. Sammendrag
-2. Innleiing (bakgrunn, problemstilling, mål, avgrensing)
-3. Metode (3B, semantikk, demontering, litteratur)
-4. Produktintroduksjon — TRIXIG produktdata, marknadsposisjon, serieoversikt
-5. **3B-analyse** — Brukar / Bruksituasjon / Bruksmåte
-6. **Demonteringsanalyse** — komponentar, materialar, konstruksjon, reparerbarheit
-7. **Produktsemantikk** — affordances, signifiers, visuelt hierarki
-8. Fysiske vs. digitale grensesnitt — overføring frå bilbryterstudien
-9. Kravspesifikasjon (funksjonell, ergonomisk, semantisk, berekraft — MoSCoW)
-10. Konseptforslag — A (Trixig+), B (Tactil), C (Modular), med vurderingsmatrise
-11. **Endeleg konsept — Trixig+** — fem konkrete grep, estimerte konsekvensar
-12. Diskusjon og refleksjon
-13. Konklusjon
-14. Litteraturliste
-15. Vedlegg
-
----
-
-## Hovudbodskap i prosjektet (om du blir spurd i sensur)
-
-> *TRIXIG er eit kompetent budsjettverktøy som lykkast med tilgjenge, intuisjon og IKEA-DNA. Det feilar på batteri (ikkje utskiftbart), retningssemantikk (uklart) og reparerbarheit (selvskruer i plast). Trixig+ rettar alle tre med +10 % pris og utan å bryte med IKEAs designspråk. Innsikta frå studien om bilbrytere brukast som forsvar for det taktile minimumsuttrykket — TRIXIG bør ikkje få ein skjerm, han bør forsterkast.*
+Sandbox-miljøet kunne ikkje opna kursfilene i `kursmateriale/` (.docx/.pptx krev kontorlivlege). Innhaldet i rapporten er bygd på 3B-PDF-en, demonteringsfotografia, IKEAs offentlege spesifikasjonar, og standard pensum (Skulberg, Krippendorff, Norman). Eg vil sterkt råde deg til å lese gjennom rapporten og rette eventuelle inkonsekvensar mot brifen og kravspesen før innlevering.
 
 ---
 

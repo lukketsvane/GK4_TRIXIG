@@ -27,3 +27,14 @@ $RECYCLE.BIN/
 
 # Reg-fil-loggar
 *.reg.bak
+
+# Render-output (Nano Banana 2 etc.)
+renderingar/
+*.png.bak
+
+# OpenSCAD-cache
+*.scad.bak
+
+# Generelle backup
+*.orig
+*~
