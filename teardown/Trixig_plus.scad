@@ -6,7 +6,7 @@
 //  modifikasjonane som er foreslått i Trixig+:
 //      - reparerbar kapsling (M3-skruekrager)
 //      - utskiftbart batterirom (18650-celle)
-//      - asymmetrisk retningsbryter
+//      - asymmetrisk retningsbrytar
 //      - statuslysstrip i bakkant
 //
 //  Slik bruker du fila:
@@ -39,7 +39,7 @@ handle_angle      = 70;     // vinkel mellom hovudhus og grep (grader frå verti
 trigger_length    = 32;
 trigger_width     = 14;
 trigger_depth     = 8;
-trigger_y_offset  = 22;     // kor langt nede frå vinkelen avtrekkeren startar
+trigger_y_offset  = 22;     // kor langt nede frå vinkelen avtrekkaren startar
 
 // Asymmetrisk retningsbryter (Trixig+-feature)
 dirsw_width       = 24;
@@ -92,7 +92,7 @@ module trixig_main_body() {
             rotate([0, 0, 0])
             cube([trigger_width + 4, trigger_depth + 4, trigger_length + 4], center = true);
 
-        // Asymmetrisk retningsbryter-utskjering
+        // Asymmetrisk retningsbrytar-utskjering
         translate([0, -handle_depth/2 - 1, -trigger_y_offset - 30])
             cube([dirsw_width + 1, dirsw_depth + 4, dirsw_height + 1], center = true);
 
@@ -152,8 +152,8 @@ module trigger() {
 }
 
 
-// ---------- ASYMMETRISK RETNINGSBRYTER (Trixig+) ---------------------
-// Den eine sida konveks med pil framover, den andre konkav med pil bakover.
+// ---------- ASYMMETRISK RETNINGSBRYTAR (Trixig+) ---------------------
+// Den eine sida er konveks med pil framover, den andre konkav med pil bakover.
 // Skal vere taktilt og visuelt forskjellig — sjå rapporten kap. 10.2.
 
 module direction_switch_asymmetric() {
@@ -174,7 +174,7 @@ module direction_switch_asymmetric() {
                 translate([0, -dirsw_depth/4, 0])
                     sphere(d = dirsw_height * 0.8);
             }
-        // Pil-relieff (forenkla — du kan endre i CAD)
+        // Pilrelieff, forenkla for vidare CAD-arbeid.
         translate([-dirsw_width/4, dirsw_depth/2, 0])
             arrow_relief(direction = 1);
         translate([dirsw_width/4, -dirsw_depth/4, 0])
@@ -214,14 +214,14 @@ module status_strip_lights() {
 module bit_holder() {
     translate([0, front_length/2 + nose_length, 0])
         rotate([90, 0, 0]) {
-            // Sekskantet 1/4'' bitsfeste
+            // Sekskanta 1/4" bitsfeste
             cylinder(d = 11, h = 12, $fn = 6);
         }
 }
 
 
 // ---------- M3 REPARERBARHEIT-SKRUER ---------------------------------
-// Seks M3-hol som går gjennom skallet, distribuert som i ekte produktet.
+// Seks M3-hol som går gjennom skallet, distribuert som i det ekte produktet.
 
 module m3_screw_pattern() {
     positions = [
