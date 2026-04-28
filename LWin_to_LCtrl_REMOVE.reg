@@ -1,7 +1,0 @@
-Windows Registry Editor Version 5.00
-
-; Fjern remappinga (gjenopprett alle tastar til standard).
-; Apply: dobbeltklikk og godta UAC. Logg ut og inn (eller restart).
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=-
