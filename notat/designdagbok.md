@@ -27,3 +27,8 @@ faktisk leser sterkare enn pil-grafikk åleine.
 - Drafta e-post for å bestille verkstad-tid (`epost_verkstad.txt`).
 
 Avgjerd: Vi køyrer på med P1 utseendemodell (for å spare tid), PowerPoint for sluttpresentasjon, og stadfestar at Trixig+ er det valde konseptet.
+
+22:00-23:30. AI-assistenten har sortert og ferdigstilt biletematerialet og filstrukturen for komande innleveringar:
+- Kopiert utvalde bilete frå `ferdigstilt_grafikk/produksjonsliste_bilete_modell` over til dedikerte innleveringsmapper under `leveransar/` (delt opp i `08_mai`, `11_mai` og `25_mai`).
+- Generert tekst- og markdown-filer for 8. mai (3B-analyse, Kravspec, Bærekrafthandling og Valt_konsept) basert på Trixig+ konseptet.
+- Klargjort alt slik at det berre er å lime rett inn i Figma/PowerPoint eller laste rett opp på Moodle.
