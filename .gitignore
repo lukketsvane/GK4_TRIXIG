@@ -12,8 +12,16 @@ $RECYCLE.BIN/
 # Editor / IDE
 .vscode/
 .idea/
+.codex/
+.claude/
 *.swp
 *.swo
+
+# Python / tool caches
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # Office temp
 ~$*.docx
@@ -24,6 +32,11 @@ $RECYCLE.BIN/
 # CAD temp
 *.f3d.bak
 *.bak
+*.blend@
 
 # Reg-fil-loggar
 *.reg.bak
+
+# Local-only cleanup/oversize holding area
+.local_large_files/
+.codex_tmp*/

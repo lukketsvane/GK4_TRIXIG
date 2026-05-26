@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="nn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRIXIG redesign — visuell moodboard</title>
+<style>
+  :root {
+    --bg: #0e0e10;
+    --surface: #18181b;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --accent: #b0c8d8;
+    --border: #27272a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  header {
+    padding: 60px 40px 30px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(14,14,16,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  nav {
+    display: flex;
+    gap: 14px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  nav a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    transition: all 0.2s;
+  }
+  nav a:hover {
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  section {
+    padding: 80px 40px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .concept-num {
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 48px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .reframe {
+    color: var(--muted);
+    font-size: 18px;
+    font-style: italic;
+    max-width: 700px;
+    margin-bottom: 12px;
+  }
+  .desc {
+    color: var(--text);
+    font-size: 15px;
+    max-width: 720px;
+    margin-bottom: 40px;
+    opacity: 0.85;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--surface);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+  .card .img-wrap {
+    aspect-ratio: 4 / 3;
+    background: #1c1c1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .card.contain img { object-fit: contain; padding: 16px; background: #fafafa; }
+  .card .meta {
+    padding: 14px 16px;
+  }
+  .card .name {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .card .designer {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .card .why {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .placeholder {
+    background: linear-gradient(135deg, #1c1c1f 0%, #2a2a2e 100%);
+    color: var(--muted);
+    font-size: 11px;
+    text-align: center;
+    padding: 24px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .placeholder .icon { font-size: 32px; opacity: 0.4; }
+  .footer {
+    padding: 40px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .ikea-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .ikea-banner .label {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .ikea-banner h3 { font-size: 18px; font-weight: 400; margin-bottom: 4px; }
+  .ikea-banner p { color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TRIXIG redesign — visuell moodboard</h1>
+  <div class="subtitle">9 konseptsprang vekk frå L-pistolforma. Hushaldsreidskap, ikoniske design, EDC-arketypar.</div>
+  <nav>
+    <a href="#k1">1 Karabinier</a>
+    <a href="#k2">2 Leppestift</a>
+    <a href="#k3">3 Bordornament</a>
+    <a href="#k4">4 Foldbar</a>
+    <a href="#k5">5 Amulett</a>
+    <a href="#k6">6 Stein</a>
+    <a href="#k7">7 Bue</a>
+    <a href="#k8">8 Tvilling</a>
+    <a href="#k9">9 Ingot</a>
+  </nav>
+</header>
+
+<!-- ===================== K1 KARABINIER ===================== -->
+<section id="k1">
+  <div class="concept-num">Konsept 01</div>
+  <h2>Karabinieren</h2>
+  <p class="reframe">Skrutrekkaren som lever på ryggsekken og veggkroken — slank stav i anodisert aluminium, ekte klatrekarabin i enden.</p>
+  <p class="desc">Statusobjekt for den som likar Olight, Leatherman, Lamy. Estetikk: kald metall, grå/svart/oliven, grov knurling, tydelege gjenger. Ikkje "verktøy i skuffa" — verktøy som heng saman med nøklane.</p>
+
+  <div class="grid">
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Lamy_2000_fountain_pen-3.jpg" alt="Lamy 2000" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder><div class=icon>✎</div>Lamy 2000</div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Lamy 2000</div>
+        <div class="designer">Gerd A. Müller (Ulm), 1966</div>
+        <div class="why">Den definitive edle staven. Makrolon + børsta stål, knurla grep. Ulm-skulen i lommeformat.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Maglite_AAA_LED.jpg" alt="Maglite Solitaire" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder><div class=icon>🔦</div>Maglite Solitaire<br><small>søk: maglite solitaire mini led</small></div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Maglite Solitaire</div>
+        <div class="designer">Anthony Maglica, 1988 (MoMA)</div>
+        <div class="why">Single-cell EDC-arketype. Knurla aluminium. Nøkkelring-øye. Gjenger som klikkar.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?w=800&q=80" alt="Karabin" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder><div class=icon>🧗</div>Black Diamond karabin</div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Black Diamond HotForge</div>
+        <div class="designer">Black Diamond Equipment</div>
+        <div class="why">Den tekniske karabinen, ikkje den dekorative. Smidd aluminium, fjørspente porter.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=800&q=80" alt="Pen on desk" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder><div class=icon>🖊</div>Olight i3T EOS</div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Olight i3T EOS</div>
+        <div class="designer">Olight, 2018</div>
+        <div class="why">Single-cell EDC, lommeklips, tail-switch. Den moderne pocket-stav-arketypen.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1591267990439-bc68929c2473?w=800&q=80" alt="Multitool" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder><div class=icon>⚙</div>Leatherman Style PS</div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Leatherman Style PS</div>
+        <div class="designer">Leatherman</div>
+        <div class="why">Klips, multifunksjonsspråk utan bling. Korleis "verktøy" får objekt-status.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1606318801954-d46d46d3360a?w=800&q=80" alt="Axe" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder>Best Made Co. felling axe</div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Best Made Co. axe</div>
+        <div class="designer">Peter Buchanan-Smith, 2009</div>
+        <div class="why">Når "verktøy" blir "objekt med sjel". Ulm møter Vermont. Korleis ein selger handverk-romantikk.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K2 LEPPESTIFT ===================== -->
+<section id="k2">
+  <div class="concept-num">Konsept 02</div>
+  <h2>Leppestiften</h2>
+  <p class="reframe">Inversjonen. Ladaren er hovudobjektet — skrutrekkaren er berre tuppen som skrur ut.</p>
+  <p class="desc">På bordet ditt står ein vakker tubeform i keramikk, børsta messing eller sandblåst glas. Når du treng skru, vrir du toppen av: ut kjem den vesle motoren med chuck. Battericella sit i sokkelen og ladar induktivt. Kjøkkenkompatibel, soverom-kompatibel, gåvepakke-kompatibel.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=800&q=80" alt="Aesop bottles">
+      </div>
+      <div class="meta">
+        <div class="name">Aesop Marrakech</div>
+        <div class="designer">Aesop, parfymeflakong</div>
+        <div class="why">Materialgravitas. Apotek-arv. Sjå korleis label + brun glas = ritual.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80" alt="Lipstick">
+      </div>
+      <div class="meta">
+        <div class="name">Tom Ford Black Orchid leppestift</div>
+        <div class="designer">Tom Ford Beauty</div>
+        <div class="why">Vekt. Magnetlokk. Klikket. Den definitive premium-tuben.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1602910344008-22f323cc1817?w=800&q=80" alt="Diptyque candle">
+      </div>
+      <div class="meta">
+        <div class="name">Diptyque keramikklysstake</div>
+        <div class="designer">Diptyque Paris</div>
+        <div class="why">Keramikkdock som *skjuler* funksjon. Lever på nattbordet.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80" alt="Perfume bottle">
+      </div>
+      <div class="meta">
+        <div class="name">Le Labo Santal 33</div>
+        <div class="designer">Le Labo</div>
+        <div class="why">Etiketten. Det handverka. Gjev lov til å eige fleire utgåver av "same" objekt.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1610705267928-1b9c83fb2d54?w=800&q=80" alt="MUJI aroma diffuser">
+      </div>
+      <div class="meta">
+        <div class="name">MUJI aroma diffuser</div>
+        <div class="designer">Naoto Fukasawa</div>
+        <div class="why">Den japanske kjøkken-kompatible sylinderen. Nøytral. Utan logo. Utan posisjonering.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1583241800698-9c2e0c5f7c34?w=800&q=80" alt="Brass cylinder">
+      </div>
+      <div class="meta">
+        <div class="name">Hermès parfyme-etui</div>
+        <div class="designer">Hermès</div>
+        <div class="why">Skinn + metall = ritual. Det at noko *kjem ut av* eit anna objekt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K3 BORDORNAMENT ===================== -->
+<section id="k3">
+  <div class="concept-num">Konsept 03</div>
+  <h2>Bordornamentet</h2>
+  <p class="reframe">Verktøyet som er for vakkert til å gøyme bort.</p>
+  <p class="desc">Står på kjøkkenbenken som ei lita statue ved sida av Bialetti og Peugeot. Vertikal totem i støypt aluminium eller olja eik. Bits står som ei lita krans rundt sokkelen. Du eig han fordi han er fin — funksjonen er bonus.</p>
+
+  <div class="grid">
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Moka_Express_Bialetti.png" alt="Bialetti Moka">
+      </div>
+      <div class="meta">
+        <div class="name">Bialetti Moka Express</div>
+        <div class="designer">Alfonso Bialetti, 1933</div>
+        <div class="why">Det italienske kjøkkenikonet. Funksjon som monument. Sett alle stadar; aldri kjedeleg.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bialetti_Moka_Express_in_action.jpg" alt="Moka in action" onerror="this.replaceWith(document.createRange().createContextualFragment('<div class=placeholder>Moka i bruk</div>'))">
+      </div>
+      <div class="meta">
+        <div class="name">Moka i bruk</div>
+        <div class="designer">Bialetti, kjøkkenscape</div>
+        <div class="why">Sjå kontekst — komfyrkanten, marmorbordet. Slik vil TRIXIG bu.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1612542195847-a063deeacf01?w=800&q=80" alt="Pepper mill">
+      </div>
+      <div class="meta">
+        <div class="name">Peugeot Paris u'Select</div>
+        <div class="designer">Peugeot, 1874-modell</div>
+        <div class="why">Tre + stål kolonne. 150 år utan å trenge fornying. Hjul-mekanisme nedst.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1572798435174-6c44e4d23bb1?w=800&q=80" alt="Espresso maker steel">
+      </div>
+      <div class="meta">
+        <div class="name">Alessi 9090</div>
+        <div class="designer">Richard Sapper, 1979 (Compasso d'Oro)</div>
+        <div class="why">Stål-skulpturen. Vidd basis, smal hals. Premium kjøkkenikon i blank stål.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1606756790138-261d2b21cd75?w=800&q=80" alt="HAY kettle">
+      </div>
+      <div class="meta">
+        <div class="name">HAY Sowden kjele</div>
+        <div class="designer">George Sowden, 2017</div>
+        <div class="why">Korleis ein bryt opp ein tung form med flate fargar. Pop på benken.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1628611540533-a3da3b1ec61a?w=800&q=80" alt="Wooden bird sculpture">
+      </div>
+      <div class="meta">
+        <div class="name">Eames House Bird</div>
+        <div class="designer">Charles & Ray Eames, 1910/1951</div>
+        <div class="why">Det reine bordobjektet utan funksjon. Pure presence. Korleis ein kan stå på benken og berre *vere*.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Cast iron object">
+      </div>
+      <div class="meta">
+        <div class="name">Sori Yanagi støpejernspanne</div>
+        <div class="designer">Sori Yanagi, 1953</div>
+        <div class="why">Japansk handverkstyngde. Korleis vekt blir kvalitet, ikkje ulempe.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K4 FOLDBAR ===================== -->
+<section id="k4">
+  <div class="concept-num">Konsept 04</div>
+  <h2>Det foldbare objektet</h2>
+  <p class="reframe">Lukka: ein kompakt ingot. Opna: motorhuset svingar 90° eller 180° ut og låsest med eit klikk.</p>
+  <p class="desc">Brukaren forhandlar grepet med produktet. Pistol eller inline — du vel sjølv. Mekanisk dialog, ingen elektronikk. Sveitsisk presisjons-arv: Olfa, Victorinox, vintage reise-strykjern.</p>
+
+  <div class="grid">
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Victorinox_Solo_Alox.jpg" alt="Victorinox Pioneer Alox">
+      </div>
+      <div class="meta">
+        <div class="name">Victorinox Pioneer Alox</div>
+        <div class="designer">Victorinox, 1957</div>
+        <div class="why">Den ærlege foldemekanismen. Klikket. Aluminium-skåler med aluminium-oksid-tekstur.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/OLFA_cutter.JPG" alt="Olfa cutter">
+      </div>
+      <div class="meta">
+        <div class="name">Olfa SVR-2 snap-blade</div>
+        <div class="designer">Yoshio Okada (Olfa), 1956</div>
+        <div class="why">Japansk teknisk ikon. Funksjonell glide. Skyte-mekanisme i lomme-format.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cutter_olfa.jpg" alt="Olfa detail">
+      </div>
+      <div class="meta">
+        <div class="name">Olfa detalj</div>
+        <div class="designer">Olfa</div>
+        <div class="why">Sjå låsemekanismen. Slik kan TRIXIG sin pivot låsa i 0°/90°/180°.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1574170609713-49a7e7d3d76c?w=800&q=80" alt="Folding hairdryer">
+      </div>
+      <div class="meta">
+        <div class="name">BaByliss Travel Pro</div>
+        <div class="designer">BaByliss</div>
+        <div class="why">Foldemekanikk i hushald. Korleis ein 90°-pivot blir kvardags-akseptert.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80" alt="Vintage knife">
+      </div>
+      <div class="meta">
+        <div class="name">Vintage Swiss Army Knife</div>
+        <div class="designer">Wenger / Victorinox, ~1960</div>
+        <div class="why">Original foldelogikk. Friksjons-fjør. Slips-håndtak.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=800&q=80" alt="Mechanical hinge">
+      </div>
+      <div class="meta">
+        <div class="name">Magis Chair_One stack</div>
+        <div class="designer">Konstantin Grcic, 2003</div>
+        <div class="why">Korleis to volum låser i kvarandre. Mekanisk poetikk.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K5 AMULETT ===================== -->
+<section id="k5">
+  <div class="concept-num">Konsept 05</div>
+  <h2>Amuletten</h2>
+  <p class="reframe">Skrutrekkaren som heng på snor rundt halsen, på nøkkelringen, beltet, ryggsekken. Du gøymer han ikkje. Han er smykke.</p>
+  <p class="desc">Liten, tung, taktil — i messing, titan eller børsta stål. Snorøye eller karabin innebygd. Hentar arven til mekaniske lommeur, militær-dogtags, og Tile/AirTag. Den eksisterande TRIXIG-snora er allereie eit hint — me dyrkar det.</p>
+
+  <div class="grid">
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Apple_AirTags_einrichten.jpg" alt="Apple AirTag">
+      </div>
+      <div class="meta">
+        <div class="name">Apple AirTag</div>
+        <div class="designer">Apple Industrial Design, 2021</div>
+        <div class="why">Liten, runda, premium polert. Snor-kompatibel. Den moderne EDC-amuletten.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Casio_F-91W_82T38575.jpg" alt="Casio F-91W">
+      </div>
+      <div class="meta">
+        <div class="name">Casio F-91W</div>
+        <div class="designer">Casio, 1989</div>
+        <div class="why">Folkets EDC-amulett. Single-cell. Plast-fantastisk. Henger like godt på snor som på handleddet.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1509048191080-d2984bad6ae5?w=800&q=80" alt="Pocket watch">
+      </div>
+      <div class="meta">
+        <div class="name">Vintage Patek Philippe lommeur</div>
+        <div class="designer">Patek Philippe, 1900-tal</div>
+        <div class="why">Premium "objekt-i-vest-lomma". Den varig-luksuriøse amuletten. Skin-leather-pouch.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80" alt="Dog tag">
+      </div>
+      <div class="meta">
+        <div class="name">Militær dogtag</div>
+        <div class="designer">US Military spec</div>
+        <div class="why">Geometrisk reduksjon på snor. Stempla informasjon. Kald metall mot bryst.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1556745753-b2904692b3cd?w=800&q=80" alt="Keychain carabiner">
+      </div>
+      <div class="meta">
+        <div class="name">Carhartt WIP karabin</div>
+        <div class="designer">Carhartt WIP</div>
+        <div class="why">Korleis "industrielt" blir "modesmykke". Same TRIXIG-blå snor — re-kontekstualisert.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80" alt="Pendant">
+      </div>
+      <div class="meta">
+        <div class="name">Tile Mate</div>
+        <div class="designer">Tile, 2012</div>
+        <div class="why">Den vesle smarte-tinga som lever på nøkkelring. Avrunda firkant, hol i hjørnet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K6 STEIN ===================== -->
+<section id="k6">
+  <div class="concept-num">Konsept 06</div>
+  <h2>Steinen</h2>
+  <p class="reframe">Skulpturell pebble som ligg i handflata. Ingen synleg knapp.</p>
+  <p class="desc">Henta frå sjøsleip stein og japansk wabi-sabi. Heile kroppen er trigger — du klemmer eller pressar mot skruen, motoren startar. Materiale: matt PA12 i jordtonar, eller terazzo-aktig støypt resin. Ligg på vindaugskarmen som ein souvenir frå ein strand.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1502810365585-7d4f0c1c6e22?w=800&q=80" alt="River stones">
+      </div>
+      <div class="meta">
+        <div class="name">Sjøsleip strand-stein</div>
+        <div class="designer">Naturen, sidan før</div>
+        <div class="why">Den opphavlege pebble-arketypen. Handflate-passform. Ingen detaljar — alt er overflate.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1545239351-cefa43af60f3?w=800&q=80" alt="Round humidifier">
+      </div>
+      <div class="meta">
+        <div class="name">±0 humidifier</div>
+        <div class="designer">Naoto Fukasawa, 2003</div>
+        <div class="why">Without Thought-arketypen. Sirkulær blob med ein liten sokkel. Ren japansk minimalisme.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1522948616293-2bba1a3a17b8?w=800&q=80" alt="Paper lantern">
+      </div>
+      <div class="meta">
+        <div class="name">Isamu Noguchi Akari</div>
+        <div class="designer">Isamu Noguchi, 1951</div>
+        <div class="why">Organisk volum med papirsjel. Sjå proporsjonar. Lette overgangar.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1604762524889-3e2fcc145683?w=800&q=80" alt="Brancusi sculpture">
+      </div>
+      <div class="meta">
+        <div class="name">Constantin Brâncuși – L'Oiseau</div>
+        <div class="designer">Brâncuși, 1923</div>
+        <div class="why">Skulpturreferansen. Proporsjonar utan funksjon. Kva eit volum kan vere når det ikkje "skal" noko.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1581338834647-b0fb40704e21?w=800&q=80" alt="MUJI products">
+      </div>
+      <div class="meta">
+        <div class="name">MUJI utan-logo-filosofi</div>
+        <div class="designer">MUJI / Fukasawa, Sam Hecht</div>
+        <div class="why">Reduksjon. Svakt PA-matt. Beige eller off-white. Forsvinn inn i interiøret.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1596079890744-c1a0462d0975?w=800&q=80" alt="Aesop bottle matte">
+      </div>
+      <div class="meta">
+        <div class="name">Aesop matt brun glas</div>
+        <div class="designer">Aesop</div>
+        <div class="why">Kjelder for taktile matte overflater. Korleis matt blir luksus.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K7 BUE ===================== -->
+<section id="k7">
+  <div class="concept-num">Konsept 07</div>
+  <h2>Buen — bow drill-renessansen</h2>
+  <p class="reframe">Tilbake til den eldste boreteknologien menneske kjenner — bogeboret. Reframe-a som elektrisk objekt.</p>
+  <p class="desc">Ein C-form. Pekefingeren ligg inne i C-en. Den eine enden er motor + chuck, den andre er battericella. Ergonomisk: aksial reaksjonskraft tas opp diagonalt mot underarmen, ikkje vinkelrett som med L. Du *omfamnar* verktøyet i staden for å halde det.</p>
+
+  <div class="grid">
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Aboriginal_bow_drill_(43821672415).jpg" alt="Aboriginal bow drill">
+      </div>
+      <div class="meta">
+        <div class="name">Bogebor (aboriginsk)</div>
+        <div class="designer">Mennesket, ~5000 f.Kr.</div>
+        <div class="why">Den opphavlege boreforma. Symbolsk vekt. Kontinuerleg kurve frå handa gjennom verktøy til arbeidsstykke.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800&q=80" alt="Violin bow">
+      </div>
+      <div class="meta">
+        <div class="name">Pernambuco felebue</div>
+        <div class="designer">Tradisjon, 1700-tal+</div>
+        <div class="why">Spenninga, balansen, det handverka. Lengda finn sin eigen tyngdepunkt.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&q=80" alt="Eyelash curler">
+      </div>
+      <div class="meta">
+        <div class="name">Shu Uemura augenbrynscurlar</div>
+        <div class="designer">Shu Uemura</div>
+        <div class="why">C-form på ergonomisk masterclass. Pekefingeren går igjennom. Korleis kosmetikk har løyst handgrep-problemet TRIXIG slit med.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?w=800&q=80" alt="Curved chair">
+      </div>
+      <div class="meta">
+        <div class="name">Eames LCW</div>
+        <div class="designer">Charles & Ray Eames, 1946</div>
+        <div class="why">Korleis to volum koplast med ein bro. Kontinuerleg kurve som strukturelt prinsipp.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=800&q=80" alt="Theragun mini">
+      </div>
+      <div class="meta">
+        <div class="name">Theragun PRO trekant</div>
+        <div class="designer">Therabody</div>
+        <div class="why">Moderne C/triangel-grep. Open form med fleire greppunkt — du vel kvar du held.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80" alt="Newson curve">
+      </div>
+      <div class="meta">
+        <div class="name">Marc Newson Lockheed Lounge</div>
+        <div class="designer">Marc Newson, 1986</div>
+        <div class="why">Kontinuerleg flytande overflate. Korleis ein form blir væske. Inspirasjon for buen sin profile.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K8 TVILLING ===================== -->
+<section id="k8">
+  <div class="concept-num">Konsept 08</div>
+  <h2>Tvillingsylindrane</h2>
+  <p class="reframe">To like sylindrar som klikkar saman magnetisk. Kvar for seg er dei eigne objekt. Saman er dei skrutrekkar.</p>
+  <p class="desc">Sylinder A: battericella, lader, USB-C. Sylinder B: motor, chuck, knapp. Du tek dei med kvar for seg — A blir powerbank, B blir manuell skrutrekkar. Saman: eit bordlangt objekt med magnet i midten som lader pinge-følelsen til AirPods og MagSafe.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1606293459183-9bf48cd5d6d4?w=800&q=80" alt="MagSafe charger">
+      </div>
+      <div class="meta">
+        <div class="name">Apple MagSafe</div>
+        <div class="designer">Apple, 2020</div>
+        <div class="why">Magnet-klikket. Det elegante "snap". Sirkulær puck som klikkar mot anna runde flate.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=800&q=80" alt="AirPods case">
+      </div>
+      <div class="meta">
+        <div class="name">AirPods Pro etui</div>
+        <div class="designer">Apple Industrial Design, 2019</div>
+        <div class="why">To-delt magnetisk arketype. Klikket. Statusringen. Dock-som-objekt.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&q=80" alt="B&O case">
+      </div>
+      <div class="meta">
+        <div class="name">B&O Beoplay E8 etui</div>
+        <div class="designer">Jakob Wagner, 2017</div>
+        <div class="why">Skinn + magnet. Premium materialitet. Korleis to halvdeler kan møtast som ei møte.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1606983340075-bf8b73c80abf?w=800&q=80" alt="Olympus Pen-F">
+      </div>
+      <div class="meta">
+        <div class="name">Olympus Pen-F</div>
+        <div class="designer">Olympus, 2016</div>
+        <div class="why">Premium tvillingelement (kropp + linse). Bajonett-fatning som ritual.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1612531048118-826c0aebd87b?w=800&q=80" alt="Two cylinders">
+      </div>
+      <div class="meta">
+        <div class="name">Foreo Luna play + dock</div>
+        <div class="designer">Foreo</div>
+        <div class="why">Kompakt sylinder + sokkel. Korleis ein "berreversjon" og "ladeversjon" snakkar saman.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80" alt="Modular components">
+      </div>
+      <div class="meta">
+        <div class="name">Nendo Twin-konsept</div>
+        <div class="designer">Oki Sato / Nendo</div>
+        <div class="why">To former som forhandlar. Japansk minimalisme i modulær form.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== K9 INGOT ===================== -->
+<section id="k9">
+  <div class="concept-num">Konsept 09</div>
+  <h2>Ingoten — gadgeten</h2>
+  <p class="reframe">Eit kompakt rektangulært ingot — som eit målebånd, ein USB-C lommepowerbank, eller ein vintage sigarettetui. Bittet popper ut frå ein kortside.</p>
+  <p class="desc">Tenk Stanley FatMax møter Apple-design. Eller LaCie Rugged hard disk. Klikk, motorhuset glir ut. Battericella ligg flat under, motoren ligg horisontalt. Aldri sett før i verktøykategorien — meir lik ein gadget enn ein drill.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&q=80" alt="Tape measure">
+      </div>
+      <div class="meta">
+        <div class="name">Stanley FatMax målebånd</div>
+        <div class="designer">Stanley, 1990-tal</div>
+        <div class="why">Industriell rektangulær arketype. Gummibumpar i hjørnene. Klikk-knapp på toppen.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800&q=80" alt="Hard drive">
+      </div>
+      <div class="meta">
+        <div class="name">LaCie Rugged Mini SSD</div>
+        <div class="designer">Neil Poulton, 2009</div>
+        <div class="why">Premium ingot med oransje gummi-skall. Korleis "hard" og "mjuk" møtest.</div>
+      </div>
+    </div>
+
+    <div class="card contain">
+      <div class="img-wrap">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zippo-rear.JPG" alt="Zippo lighter" onerror="this.src='https://images.unsplash.com/photo-1613300728923-99cd83a32f78?w=800&q=80'">
+      </div>
+      <div class="meta">
+        <div class="name">Zippo lighter</div>
+        <div class="designer">George Blaisdell, 1933</div>
+        <div class="why">Klikket. Det ergonomiske rektangelet. Perfekt lommeformat. Hengsle-mekanisme.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1517059224940-d4af9eec41b7?w=800&q=80" alt="Vintage cigarette case">
+      </div>
+      <div class="meta">
+        <div class="name">Vintage Dunhill sigarettetui</div>
+        <div class="designer">Dunhill, 1920-tal</div>
+        <div class="why">Smal rektangulær luksus. Gravert sølv. Hengsle. Korleis "lomme-objekt" blir status.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1574790350907-ee2cb02b8e22?w=800&q=80" alt="Calculator Braun">
+      </div>
+      <div class="meta">
+        <div class="name">Braun ET-66 kalkulator</div>
+        <div class="designer">Dieter Rams, 1987</div>
+        <div class="why">Den minimalistiske rektangulære disiplinen. Less is more, but better. Knapp-grid.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-wrap">
+        <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800&q=80" alt="Olfa cutter EDC">
+      </div>
+      <div class="meta">
+        <div class="name">Olfa lomme-cutter</div>
+        <div class="designer">Olfa</div>
+        <div class="why">Skyte-mekanisme i lomme-format. Slim rektangel som leverer noko vassflatt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  9 konsept × ~6 referansar = 54 visuelle anker for moodboard.<br>
+  Høgreklikk kvart bilete for å lagre, eller dra direkte inn i Figma.<br>
+  Bilete med trasige URL-ar viser fallback-tekst — søk på namnet i Figma sin "Insert image" eller Google.
+</div>
+
+</body>
+</html>
