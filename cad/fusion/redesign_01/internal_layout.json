@@ -1,0 +1,47 @@
+{
+ "frame": "redesign_01 world mm",
+ "motor_gearbox": {
+  "axis": "world -X at Y=0, Z=97.2",
+  "rear_X": -104.6,
+  "shaft_tip_X": -211.0,
+  "segments_mm": [
+   {
+    "can": "dia32 x47, X -104.6..-151.6"
+   },
+   {
+    "gearbox": "dia35 x32.4, X -151.6..-184.0"
+   },
+   {
+    "front_boss": "dia18 x3, X -184.0..-187.0"
+   },
+   {
+    "shaft": "dia10 x24, X -187.0..-211.0"
+   }
+  ],
+  "total_len_mm": 106.4
+ },
+ "pcb_battery": {
+  "assembly": "PCB 95.39x26.31x1.6 with 18650 dia18.6x65.02 on top (stack ~20.2)",
+  "motor_wire_end_world_mm": [
+   -105,
+   0,
+   90
+  ],
+  "usb_c_end_world_mm": [
+   -45,
+   0,
+   12
+  ],
+  "axis_dir": [
+   0.61,
+   0,
+   -0.79
+  ],
+  "board_normal_dir": [
+   0.79,
+   0,
+   0.61
+  ],
+  "note": "USB-C at base, motor connector toward motor/trigger"
+ }
+}

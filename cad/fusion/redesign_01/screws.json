@@ -1,0 +1,18 @@
+{
+ "frame": "redesign_01 world mm; axis along Y (parting-plane normal); Y=0 split",
+ "note": "Final layout after user review: 5 screws (the rear-mid S5 was removed; base/strap area left clear for the lanyard cord passage). S1/S2 flank the thin nose shaft at the front_shell junction (X<-178), not the fat gearbox.",
+ "count": 5,
+ "spec": {
+  "pilot_dia_mm": 2.4,
+  "boss_dia_mm": 8.6,
+  "boss_len_mm": 10,
+  "fastener": "M3x12 self-tapping (per prior print build screw_m3x12_0X.stl)"
+ },
+ "positions_XZ_mm": {
+  "S1_barrel_top":     [-189.2, 110.5],
+  "S2_barrel_bot":     [-189.9,  83.2],
+  "S3_body_upper":     [ -98.7, 114.9],
+  "S4_grip_front_low": [ -69.3,  34.3],
+  "S6_rear_heel":      [ -10.0,  60.0]
+ }
+}
