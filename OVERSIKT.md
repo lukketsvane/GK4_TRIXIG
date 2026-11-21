@@ -31,7 +31,7 @@ Sist oppdatert 21. november 2026.
 | 8. mai kl. 20 | 3B-analyse, kravspec, valt berekraftshandling, bilete av 3 konsept og markering av valt konsept | [`docs/deliverables/08_mai_konseptgjennomgang/`](docs/deliverables/08_mai_konseptgjennomgang/) | Konsepta låg berre som tre separate bilete. Manus: [`docs/project/konseptgjennomgang_8mai.md`](docs/project/konseptgjennomgang_8mai.md) |
 | **Supplering** | **Plansje for tre design** | [`docs/deliverables/supplering_tre_konsept/`](docs/deliverables/supplering_tre_konsept/) | **Ny, november 2026** |
 | 11. mai kl. 09 | Formføringsplansje med 3 verdiord | [`docs/deliverables/11_mai_formforingsplansje/`](docs/deliverables/11_mai_formforingsplansje/) (2 bilete) | Tekst: [`docs/project/formfringsplansje_11mai.md`](docs/project/formfringsplansje_11mai.md). Verdiord: Synleg, Stille, Truverdig |
-| 25. mai kl. 20 | Digital sluttpresentasjon og 3 bilete av den fysiske modellen | [`docs/deliverables/25_mai_sluttpresentasjon/`](docs/deliverables/25_mai_sluttpresentasjon/) (4 bilete) | Sjølve presentasjonen ligg ikkje i repoet. I Drive finst `TRIXIG_plus_endeleg_designbrief_18_sider.pdf` og `TRIXIG_OPEN_endeleg_designbrief.pdf` frå 26. mai; dei er ikkje gjennomgått enno |
+| 25. mai kl. 20 | Digital sluttpresentasjon og 3 bilete av den fysiske modellen | [`docs/deliverables/25_mai_sluttpresentasjon/`](docs/deliverables/25_mai_sluttpresentasjon/) (4 bilete) | Sjølve presentasjonen ligg ikkje i repoet. Det næraste i Drive er `TRIXIG_plus_endeleg_designbrief_18_sider.pdf` frå 26. mai. Han går frå 20 batterivariantar via 6 og 3 til éin: «open service-rygg». Sjå òg `TRIXIG_OPEN_endeleg_designbrief.pdf` |
 | Veke 21 | CAD i Fusion 360 | [`cad/fusion/`](cad/fusion/), særleg `redesign_01/` (skal, delingslinje, skruer) | Print-filer i [`cad/print/trixig_redesign/`](cad/print/trixig_redesign/) |
 | Løpande | Designdagbok | [`docs/project/designdagbok.md`](docs/project/designdagbok.md) | Berre 28. april er ført |
 
@@ -44,13 +44,27 @@ Sist oppdatert 21. november 2026.
 
 ### Google Drive
 
-Kartlegginga av Drive er ikkje ferdig. Denne delen blir oppdatert.
+Hovudmappa er `My Drive/01 aho/GK4/GK4_TRIXIG`:
 
-- **Hovudmapper:**
-  - `GK4_TRIXIG` med undermappene `trixig`, `trixig fold`, `trixig redesign` (med `trixig_print`) og `trixig usdz`.
-  - `Trixig` med undermappene `trixig rot` og `trixig_strukturbygger`.
-- **Mykje ligg dobbelt.** Til dømes finst `2 Introduksjon om elskrutrekker Trixig.pptx` og `Designbrief Trixig elskrutrekker.docx` i fem kopiar kvar.
-- **Store arbeidsfiler frå juni** (Blender, Plasticity, USDZ) ligg berre i Drive: `trixig_colani`, `trixig_fold`, `trixig_new_01`–`04` og `trixig_original_and_drafts`.
+| Mappe | Innhald |
+|---|---|
+| `Dokument/` | Den reviderte debriefen `GK4_Trixig.pdf` (36 s.), `Personleg debrief — Trixig+ redesign.pdf`, `personleg-debrief-trixig.docx` og Google-dokumentet «Strukturvariasjon TRIXIG Redesign» |
+| `Debrief_Materiale/` | Figurar og data til debriefen |
+| `kursfiler_undervising/kursmateriale/` | Kursmaterialet frå lærarane, no i éin kopi |
+| `skisser/` | Skisser og tillegg, med eit utval i `utvalgte/` |
+| `teardown/` og `trixig/` | Foto frå demonteringa. `trixig/` har òg essayet «Drill, ord for ord» og `trixig.usdz` |
+| `trixig redesign/` | Redesign-filer, og printfiler i `trixig_print/` (med `for_bambu/`) |
+| `trixig usdz/`, `trixig fold/`, `Modellar/`, `Referansemodellar_USDZ/` | 3D-modellar: USDZ og STL, `trixig_fold_01`–`10`, `FERDIG+REDESIGN_01/02` og `trixig_new_01`–`04` |
+
+Andre stader med Trixig-materiale:
+
+- **`My Drive/01 aho/GK4/TRIXIG`:** den opphavlege kursnedlastinga. Etter ryddinga ligg berre ei lenkjefil att der. Kursfilene finst i `kursfiler_undervising/kursmateriale/`.
+- **Dei synkroniserte PC-mappene:**
+  - `Desktop/1_Prosjekt/Trixig`: den endelege designbriefen frå 26. mai, `TRIXIG_plus_endeleg_designbrief_18_sider.pdf` og `TRIXIG_OPEN_endeleg_designbrief.pdf`.
+  - `Desktop/3mf`: arbeidsfilene frå juni, `trixig_colani`, `trixig_fold` og `trixig_original_and_drafts`.
+  - `My computer/laser`: HTML-slides for konseptgjennomgangen, `Slide_Konsept_01`–`12.html`.
+- **`My Drive/Google AI Studio`:** genererte Trixig-bilete og prompt frå 10.–17. juni.
+- **Rydde-loggar:** `My Drive/90 arkiv/diverse/drive_tidy_manifest.json` (17. september) og arket «drive-rydding 2026-11-13, flyttelogg (komplett)» i `My Drive/90 arkiv/rydde-loggar`.
 
 ### Figma
 
@@ -80,6 +94,20 @@ methods/tjalve/      utval frå Tjalve-metoden
 
 ## Opprydding 21. november 2026
 
+### I Google Drive
+
+- **Flytta til papirkorga, berre i `My Drive/01 aho/GK4`** (80 element, 584 MB). Alt kan hentast att frå papirkorga fram til om lag 21. desember 2026.
+  - 73 eksakte duplikat (same namn og storleik), mest kursfiler som låg i fem kopiar og teardown-foto. Éin kopi av kvar fil står att.
+  - 3 autobackup-filer: `cast.blend1`, `cast_v3.blend1` og `pen_prev1.plasticity`. Hovudfilene ligg framleis der.
+  - 4 tomme mapper: `New folder`, `pptx2pdf`, `bilete/gamle` og `bilete`.
+- **Ikkje rørt:** dei synkroniserte PC-mappene og Google AI Studio. Sletting der frå nettlesaren kan òg slette filene på PC-en.
+- **Att å slette på PC-en:** om lag 2,2 GB Trixig-autobackup i dei synkroniserte PC-mappene. Dei største er:
+  - `3mf/trixig_original_and_drafts.blend1` (999 MB)
+  - `3mf/trixig_fold.blend1` (210 MB)
+  - `_prev1.plasticity`-filer og ei `.tmp`-fil i `3mf/plasticity/` og `1_Prosjekt/Redesign/`
+
+### I repoet
+
 - **Sletta:**
   - 3 eksakte duplikat.
   - Next.js-byggjecachen i `grunnstruktur_web/`. Kjeldekoden til denne struktur-byggjaren vart fjerna i juni, men ligg i git-historikken (commit `8a05efe`).
@@ -103,3 +131,4 @@ methods/tjalve/      utval frå Tjalve-metoden
    - genererte plansjar: «Særeigen, Trygg, Sjølvstendig» og «Venleg, Presis, Robust»
 4. **Batteriet:** 8. mai-manuset kallar cella «innelodda». Teardownen i debriefen viser derimot at cella ligg i fjørklemmer og ikkje er lodda.
 5. **Fristen for debriefen:** prosjektbeskrivinga seier «mandag 4. april», men 4. april 2026 var ein laurdag. Fristen var måndag 4. mai, som er datoen debriefen sjølv oppgjev.
+6. **Konseptvalet endra seg etter 8. mai.** Konseptgjennomgangen valde Trixig+. Designbriefen frå 26. mai landar derimot på «open service-rygg», etter sidekassett, ryggkassett og flat-pakke-hengsle. Plansja for suppleringa viser konsepta frå 8. mai.
