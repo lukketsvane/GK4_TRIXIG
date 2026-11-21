@@ -11,6 +11,7 @@ Sist oppdatert 21. november 2026.
   Endre `plansje_tre_konsept.html` i same mappe, og lagre som PDF frå Chrome (A3 liggande, ingen marg, bakgrunnsgrafikk på).
 - **Oppgåva frå lærarane** er samla i éin PDF med prosjektbeskrivinga og designbriefen:
   [`docs/course/00_samla_oppgaveskildring_og_designbrief.pdf`](docs/course/00_samla_oppgaveskildring_og_designbrief.pdf).
+- **Dei målte CAD-delane av original-Trixigen** er samla i [`cad/original_trixig/`](cad/original_trixig/), med delliste og mål i README-en. Bruk dei som grunnlag når du 3D-modellerer konseptet.
 
 ## Oppgåva
 
@@ -89,6 +90,7 @@ cad/
   plasticity/        Plasticity-filer, referansemesh og OBJ-eksport (export/)
   print/             STL og 3MF for 3D-print
   models/            eksterne referansemodellar
+  original_trixig/   målte CAD-delar av originalen: 20 STL-delar, motor og kretskort, med README
 methods/tjalve/      utval frå Tjalve-metoden
 ```
 
@@ -118,7 +120,7 @@ methods/tjalve/      utval frå Tjalve-metoden
   - `trixig_reedeeesign_01/` til `assets/generated/gen_13_06/`, med nye filnamn.
 - `.gitignore` held no autobackup-filer og byggjecache ute.
 - Kvar fil er logga i [`docs/repo_cleanup/cleanup_manifest.csv`](docs/repo_cleanup/cleanup_manifest.csv).
-- Behaldt med vilje: to like STL-filer for batteri og kretskort. `cad/fusion/trixig_pcb_battery_print_stl.py` skriv same fil til både `cad/fusion/pcb_battery_asset/` og `cad/print/trixig_redesign/for_bambu/`.
+- Behaldt med vilje: to like STL-filer for batteri og kretskort. `cad/fusion/trixig_pcb_battery_print_stl.py` skriv same fil til både `cad/original_trixig/komponentar/pcb_battery_asset/` og `cad/print/trixig_redesign/for_bambu/`.
 - `.git`-mappa er om lag 1,1 GB fordi store filer ligg i historikken. Det krev omskriving av historikken å krympe ho, og det er ikkje gjort.
 
 ## Avvik å vere merksam på
