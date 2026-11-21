@@ -9,6 +9,8 @@ Sist oppdatert 21. november 2026.
   Ho viser konsept A Trixig+, B Tactil og C Modular frå konseptgjennomgangen 8. mai. Trixig+ er markert som valt konsept.
 - **Før innlevering:** legg inn namnet ditt. Det står ikkje på plansja fordi repoet er offentleg.
   Endre `plansje_tre_konsept.html` i same mappe, og lagre som PDF frå Chrome (A3 liggande, ingen marg, bakgrunnsgrafikk på).
+- **Oppgåva frå lærarane** er samla i éin PDF med prosjektbeskrivinga og designbriefen:
+  [`docs/course/00_samla_oppgaveskildring_og_designbrief.pdf`](docs/course/00_samla_oppgaveskildring_og_designbrief.pdf).
 
 ## Oppgåva
 
@@ -18,7 +20,7 @@ Sist oppdatert 21. november 2026.
 | Periode | 27. april til 27. mai 2026 (veke 18–22) |
 | Modulansvarleg | Harald Skulberg |
 | Oppdrag | Redesign av IKEA TRIXIG 3,6 V for marknadsintroduksjon i 2028 (simulert oppdrag frå IKEA) |
-| Krav | [`docs/course/01_prosjektbeskrivelse_gk4_elskrutrekker.docx`](docs/course/01_prosjektbeskrivelse_gk4_elskrutrekker.docx) og [`docs/course/designbrief_trixig_elskrutrekker.docx`](docs/course/designbrief_trixig_elskrutrekker.docx) |
+| Krav | Samla PDF: [`docs/course/00_samla_oppgaveskildring_og_designbrief.pdf`](docs/course/00_samla_oppgaveskildring_og_designbrief.pdf). Originalane: [`01_prosjektbeskrivelse_gk4_elskrutrekker.docx`](docs/course/01_prosjektbeskrivelse_gk4_elskrutrekker.docx) og [`designbrief_trixig_elskrutrekker.docx`](docs/course/designbrief_trixig_elskrutrekker.docx) |
 | Valt konsept | A, Trixig+: same form, utskiftbar 18650-celle, Torx-skruer, asymmetrisk retningsbrytar og status-LED |
 
 ## Leveransar
@@ -100,3 +102,4 @@ methods/tjalve/      utval frå Tjalve-metoden
    - formføringsplansja: «Synleg, Stille, Truverdig»
    - genererte plansjar: «Særeigen, Trygg, Sjølvstendig» og «Venleg, Presis, Robust»
 4. **Batteriet:** 8. mai-manuset kallar cella «innelodda». Teardownen i debriefen viser derimot at cella ligg i fjørklemmer og ikkje er lodda.
+5. **Fristen for debriefen:** prosjektbeskrivinga seier «mandag 4. april», men 4. april 2026 var ein laurdag. Fristen var måndag 4. mai, som er datoen debriefen sjølv oppgjev.
