@@ -11,10 +11,10 @@ Hard dimensions are taken from the caliper reference photos:
 Run:
   "C:/Program Files/Blender Foundation/Blender 5.1/blender.exe" --background --python trixig_pcb_battery_blender.py
 
-Outputs are written next to this script in:
-  pcb_battery_asset/trixig_pcb_battery_scaled.blend
-  pcb_battery_asset/trixig_pcb_battery_scaled.glb
-  pcb_battery_asset/trixig_pcb_battery_scaled.obj
+Outputs are written to cad/original_trixig/komponentar/pcb_battery_asset/:
+  trixig_pcb_battery_scaled.blend
+  trixig_pcb_battery_scaled.glb
+  trixig_pcb_battery_scaled.obj
 
 The authored dimensions are in millimeters, but Blender/GLTF geometry is stored
 internally in meters so imports into normal Blender scenes come in at 1:1 scale.
@@ -30,8 +30,8 @@ from mathutils import Vector
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-OUT_DIR = SCRIPT_DIR / "pcb_battery_asset"
-OUT_DIR.mkdir(exist_ok=True)
+OUT_DIR = SCRIPT_DIR.parent / "original_trixig" / "komponentar" / "pcb_battery_asset"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 BLEND_PATH = OUT_DIR / "trixig_pcb_battery_scaled.blend"
 GLB_PATH = OUT_DIR / "trixig_pcb_battery_scaled.glb"

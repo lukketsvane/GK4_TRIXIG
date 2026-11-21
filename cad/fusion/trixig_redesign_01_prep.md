@@ -37,8 +37,10 @@ From documented caliper teardown (`assets/reference/teardown/`,
 - **PCB+battery**: PCB 95.39×26.31×1.6 with 18650 Ø18.6×65.0 stacked on top (stack ≈20.2).
   Stands raked in the handle: motor-wire end ≈ (−105, 0, 90), **USB-C end at the base**
   ≈ (−45, 0, 12); axis dir (0.61, 0, −0.79), board normal (0.79, 0, 0.61).
-- Faithful meshes if needed: `cad/fusion/pcb_battery_asset/trixig_pcb_battery_scaled.obj`,
-  `cad/print/trixig_redesign/for_bambu/{motor_gear_module,pcba_board}.stl`.
+- Faithful meshes if needed: `cad/original_trixig/komponentar/pcb_battery_asset/trixig_pcb_battery_scaled.obj`
+  and `cad/original_trixig/komponentar/motor_girkasse_malt.stl`. (The print files
+  `for_bambu/{motor_gear_module,pcba_board}.stl` are misnamed: they are the trigger and the
+  top panel. See `cad/original_trixig/README.md`.)
 
 ## Screw system — 5 bosses (final, user-reviewed)
 
