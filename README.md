@@ -1,15 +1,11 @@
 # GK4_TRIXIG
 
-Organized project repository for the TRIXIG redesign work.
+Redesign av IKEA TRIXIG 3,6 V (AHO GK4 V26, modul 2).
 
-Start med [`OVERSIKT.md`](OVERSIKT.md): krav, leveransar, kvar filene ligg og status for suppleringa.
+Repoet har berre det som trengst for å levere suppleringa, velje eitt konsept, modellere det og printe eit ferdig produkt. Start i [`OVERSIKT.md`](OVERSIKT.md).
 
-## Structure
-
-- `docs/` - project writing, course material, reports, brand notes, and cleanup records.
-- `assets/` - reference images, teardown photos, finished graphics, generated concepts, and visual studies.
-- `cad/` - Fusion, Blender, Plasticity, print, and model assets.
-- `methods/` - Tjalve and method reference material.
-
-Large local-only files at or above 100 MB are kept out of Git under `.local_large_files/`.
-Cleanup decisions are recorded in `docs/repo_cleanup/cleanup_manifest.csv`.
+- `docs/`: oppgåva frå lærarane, kravspesifikasjonen, prototyperettleiinga og suppleringsplansja
+- `konsept/`: kandidatkonsepta
+- `cad/original_trixig/`: dei målte delane av originalen
+- `cad/fusion/`: skript og notat, og CAD-pakka til konsept R1
+- `assets/reference/ikea/`: IKEA-logoen
