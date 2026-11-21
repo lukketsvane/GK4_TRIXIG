@@ -1,0 +1,256 @@
+<!doctype html>
+<!--
+  Plansje: tre konsept for Trixig (A3 liggande).
+  Kjelde for plansje_tre_konsept_a3.pdf / .png i same mappe.
+  Ny PDF: opne fila i Chrome -> Skriv ut -> Lagre som PDF
+  (papir A3 liggande, marg: ingen, bakgrunnsgrafikk: på).
+  Bileta kjem frå ../08_mai_konseptgjennomgang/. Fonten Noto IKEA blir henta
+  frå naborepoet trixig.iverfinne.no; manglar det, fell plansja tilbake til
+  Noto Sans / Verdana.
+-->
+<html lang="nn">
+<head>
+<meta charset="utf-8">
+<title>Tre konsept for Trixig</title>
+<style>
+  @font-face {
+    font-family: "Noto IKEA";
+    src: local("Noto IKEA"), url("../../../../trixig.iverfinne.no/public/fonts/NotoIKEA-Regular.ttf") format("truetype");
+    font-weight: 400; font-style: normal;
+  }
+  @font-face {
+    font-family: "Noto IKEA";
+    src: local("Noto IKEA Bold"), url("../../../../trixig.iverfinne.no/public/fonts/NotoIKEA-Bold.ttf") format("truetype");
+    font-weight: 700; font-style: normal;
+  }
+
+  :root {
+    --trixig-black: #1A1A1A;
+    --trixig-blue: #A6C8DC;
+    --trixig-blue-pale: #D4E4EE;
+    --ink: #111111;
+    --ink-2: #444444;
+    --ink-3: #767676;
+    --rule: #E5E5E5;
+    --rule-strong: #BDBDBD;
+  }
+
+  @page { size: 420mm 297mm; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #FFFFFF; }
+  body {
+    font-family: "Noto IKEA", "Noto Sans", Verdana, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 420mm; height: 297mm; overflow: hidden;
+    padding: 12mm 13mm 9mm;
+    display: grid; grid-template-rows: auto 1fr auto; row-gap: 6mm;
+  }
+
+  /* ---------- Hovud ---------- */
+  .eyebrow { font-size: 9pt; font-weight: 700; color: var(--ink-2); letter-spacing: 0.02em; }
+  .headrow { display: grid; grid-template-columns: 1fr 1fr; column-gap: 7mm; align-items: end; margin-top: 3mm; }
+  h1 { font-size: 34pt; line-height: 1.05; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+  .lead { font-size: 11.5pt; line-height: 1.45; margin: 0; color: var(--ink); }
+
+  /* ---------- Kolonnar ---------- */
+  .body { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 7mm; min-height: 0; }
+
+  .card {
+    border: 1px solid var(--rule); border-radius: 8px; padding: 5mm;
+    display: flex; flex-direction: column; min-height: 0;
+  }
+  .card.chosen { border: 2px solid var(--trixig-black); padding: calc(5mm - 1px); }
+
+  .cardhead { display: flex; align-items: flex-start; gap: 3mm; min-height: 13mm; }
+  .letter {
+    flex: none; width: 9mm; height: 9mm; border-radius: 50%;
+    border: 1.5px solid var(--trixig-black);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13pt; font-weight: 700;
+  }
+  .chosen .letter { background: var(--trixig-black); color: #FFFFFF; }
+  h2 { font-size: 18pt; line-height: 1.1; margin: 0; font-weight: 700; }
+  .sub { font-size: 10pt; color: var(--ink-2); margin: 0.6mm 0 0; }
+  .pill {
+    margin-left: auto; flex: none;
+    background: var(--trixig-blue); color: var(--ink);
+    font-size: 8.5pt; font-weight: 700; line-height: 1;
+    padding: 1.6mm 3mm; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 1.4mm;
+  }
+  .pill svg { width: 3.2mm; height: 3.2mm; }
+
+  .shot { width: 100%; aspect-ratio: 566 / 690; overflow: hidden; margin-top: 2mm; }
+  .shot img { display: block; width: 100%; margin-top: calc(-100% * var(--crop) / 566); }
+
+  .strategy { font-size: 10.5pt; line-height: 1.4; margin: 3mm 0 0; font-weight: 700; }
+  h3 { font-size: 8.5pt; font-weight: 700; color: var(--ink-2); margin: 3.2mm 0 1.4mm; letter-spacing: 0.02em; }
+  ol { margin: 0; padding: 0; list-style: none; counter-reset: grep; }
+  ol li {
+    counter-increment: grep; position: relative;
+    font-size: 9.5pt; line-height: 1.38; padding-left: 5.2mm; margin: 0 0 1.1mm;
+  }
+  ol li::before {
+    content: counter(grep); position: absolute; left: 0; top: 0.35mm;
+    width: 3.6mm; height: 3.6mm; border-radius: 50%;
+    background: var(--trixig-blue-pale); color: var(--ink);
+    font-size: 7pt; font-weight: 700; line-height: 3.6mm; text-align: center;
+  }
+
+  .facts { margin: auto 0 0; padding-top: 3mm; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; column-gap: 4mm; }
+  .facts dt { font-size: 8pt; color: var(--ink-3); font-weight: 700; }
+  .facts dd { margin: 0.6mm 0 0; font-size: 10pt; font-weight: 700; }
+  .facts p { grid-column: 1 / -1; font-size: 8.5pt; line-height: 1.35; color: var(--ink-2); margin: 2mm 0 0; }
+
+  /* ---------- Vurdering ---------- */
+  .eval { display: flex; flex-direction: column; min-height: 0; }
+  .eval h2 { font-size: 18pt; }
+  .eval .sub { margin-bottom: 3mm; }
+  table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+  th, td { padding: 1.7mm 1.2mm; border-bottom: 1px solid var(--rule); text-align: right; }
+  th:first-child, td:first-child { text-align: left; padding-left: 0; }
+  thead th { font-size: 8pt; color: var(--ink-3); font-weight: 700; border-bottom: 1px solid var(--rule-strong); }
+  td.w { color: var(--ink-3); }
+  td.a, th.a { background: var(--trixig-blue-pale); font-weight: 700; }
+  tfoot td { font-weight: 700; font-size: 10.5pt; border-bottom: 0; border-top: 1px solid var(--trixig-black); }
+  .note { font-size: 8pt; color: var(--ink-3); margin: 1.8mm 0 0; line-height: 1.35; }
+
+  .choice { margin-top: 6mm; border: 2px solid var(--trixig-black); border-radius: 8px; padding: calc(5mm - 1px); }
+  .choice .pill { margin-left: 0; }
+  .choice h2 { margin-top: 2.6mm; }
+  .choice p { font-size: 9.5pt; line-height: 1.42; margin: 2.4mm 0 0; }
+
+  .action { margin-top: auto; padding-top: 3mm; border-top: 1px solid var(--rule); }
+  .action h3 { margin-top: 0; }
+  .action p { font-size: 9pt; line-height: 1.4; margin: 0; color: var(--ink); }
+
+  /* ---------- Fot ---------- */
+  .foot { display: flex; align-items: flex-end; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 2.6mm; }
+  .foot span { font-size: 8.5pt; color: var(--ink-3); }
+  .foot img { height: 8.5mm; display: block; }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <header>
+    <div class="eyebrow">AHO · GK4 V26 · Modul 2 · Elektrisk skrutrekkar · Konseptgjennomgang</div>
+    <div class="headrow">
+      <h1>Tre vegar til ein<br>reparerbar Trixig.</h1>
+      <p class="lead">Batteriet i IKEA TRIXIG 3,6 V kan ikkje bytast av brukaren. Frå 18. februar 2027 krev EU-forordning 2023/1542, artikkel 11, at det skal kunne det. Dei tre konsepta svarar på det same problemet med tre strategiar, frå ei forsiktig forbetring til eit heilt modulsystem.</p>
+    </div>
+  </header>
+
+  <section class="body">
+
+    <article class="card chosen">
+      <div class="cardhead">
+        <span class="letter">A</span>
+        <div><h2>Trixig+</h2><p class="sub">Forsiktig forbetring</p></div>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Valt konsept</span>
+      </div>
+      <div class="shot" style="--crop: 62"><img src="../08_mai_konseptgjennomgang/konsept_a_trixig.png" alt="Konsept A, Trixig+: skissemodell i blåskum sett frå sida, framanfrå og i 3/4."></div>
+      <p class="strategy">Behald form, fargar og produksjonsmetode. Endre berre det som må endrast.</p>
+      <h3>Fem grep</h3>
+      <ol>
+        <li>M3 Torx T10-skruer i messinghylser i staden for sjølvgjengande skruer</li>
+        <li>Utskiftbar 18650-celle i holdar med fjørkontaktar</li>
+        <li>Asymmetrisk retningsbrytar: konveks med pil fram, konkav bak</li>
+        <li>Status-LED-stripe med fire prikkar bak på toppen</li>
+        <li>ISO 11469-merking og 30 % resirkulert ABS</li>
+      </ol>
+      <dl class="facts">
+        <div><dt>Målpris</dt><dd>219 NOK</dd></div>
+        <div><dt>Passar i TRIXIG-serien</dt><dd>Høg</dd></div>
+        <p>Same silhuett som originalen, men lett å kjenne att på skruene, brytaren og lyset.</p>
+      </dl>
+    </article>
+
+    <article class="card">
+      <div class="cardhead">
+        <span class="letter">B</span>
+        <div><h2>Tactil</h2><p class="sub">Ergonomisk oppgradering</p></div>
+      </div>
+      <div class="shot" style="--crop: 66"><img src="../08_mai_konseptgjennomgang/konsept_b_tactil.png" alt="Konsept B, Tactil: skissemodell i blåskum med tekstilgrep og momentring, sett framanfrå, frå sida og i 3/4."></div>
+      <p class="strategy">Trixig+ som grunnlag, pluss ergonomiske og mekaniske forbetringar.</p>
+      <h3>Fire grep utover Trixig+</h3>
+      <ol>
+        <li>TPE-overstøyp på grepet for betre friksjon og opplevd kvalitet</li>
+        <li>Mekanisk momentkopling som slepp når momentet blir for høgt, og vernar skruehovudet</li>
+        <li>Eigen knapp for arbeidslyset, skild frå avtrekkaren</li>
+        <li>Kraftigare motor: 7 Nm i staden for 5 Nm</li>
+      </ol>
+      <dl class="facts">
+        <div><dt>Målpris</dt><dd>ca. 309 NOK</dd></div>
+        <div><dt>Passar i TRIXIG-serien</dt><dd>Middels</dd></div>
+        <p>Nærmar seg Bosch IXO i pris og kan svekkje den demokratiske plasseringa til TRIXIG.</p>
+      </dl>
+    </article>
+
+    <article class="card">
+      <div class="cardhead">
+        <span class="letter">C</span>
+        <div><h2>Modular</h2><p class="sub">Systembasert</p></div>
+      </div>
+      <div class="shot" style="--crop: 100"><img src="../08_mai_konseptgjennomgang/konsept_c_modular.png" alt="Konsept C, Modular: liten kjernemodul i blåskum med lause forlengingshandtak, sett framanfrå, frå sida og i 3/4."></div>
+      <p class="strategy">Skrutrekkaren blir ein modul i eit større TRIXIG-system. Kjernen blir mindre og enklare.</p>
+      <h3>Tre modular</h3>
+      <ol>
+        <li>Kjernemodul, om lag 30 % mindre enn dagens TRIXIG</li>
+        <li>Forlengingshandtak med ekstra batteri som gjer kjernen til ein lett drill</li>
+        <li>Bitsmagasin som matar bits fortløpande ved seriemontering</li>
+      </ol>
+      <dl class="facts">
+        <div><dt>Målpris</dt><dd>169 NOK (kjerne)</dd></div>
+        <div><dt>Passar i TRIXIG-serien</dt><dd>Låg</dd></div>
+        <p>Med modular: 199–299 NOK. Bryt med prinsippet éin funksjon, eitt produkt, og krev redesign av heile serien.</p>
+      </dl>
+    </article>
+
+    <aside class="eval">
+      <h2>Vurdering</h2>
+      <p class="sub">Skår 1–10 per kriterium, gonga med vekta. Høg skår er betre.</p>
+      <table>
+        <thead>
+          <tr><th>Kriterium</th><th>Vekt</th><th class="a">A</th><th>B</th><th>C</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Brukarverdi</td><td class="w">×3</td><td class="a">7</td><td>9</td><td>8</td></tr>
+          <tr><td>Pris</td><td class="w">×3</td><td class="a">9</td><td>6</td><td>4</td></tr>
+          <tr><td>Reparerbarheit</td><td class="w">×3</td><td class="a">9</td><td>7</td><td>6</td></tr>
+          <tr><td>Semantisk klarheit</td><td class="w">×2</td><td class="a">8</td><td>8</td><td>6</td></tr>
+          <tr><td>Passar i IKEA</td><td class="w">×2</td><td class="a">9</td><td>7</td><td>5</td></tr>
+          <tr><td>Låg teknisk risiko</td><td class="w">×2</td><td class="a">9</td><td>7</td><td>4</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Vekta sum (av 150)</td><td></td><td class="a">127</td><td>110</td><td>84</td></tr>
+        </tfoot>
+      </table>
+
+      <div class="choice">
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Valt konsept</span>
+        <h2>A — Trixig+</h2>
+        <p>Trixig+ løyser alle seks kritikkpunkta, altså batteri, forsegling, semantikk, status, materialretur og regelverk, for om lag 11 NOK i meirkostnad per eining. Konseptet er teknisk realistisk innanfor fire veker og passar best inn i TRIXIG-serien.</p>
+        <p>Tactil gjev reell brukarverdi, men sprengjer prispunktet. Modular er strategisk interessant, men krev redesign av heile serien og fell utanfor rammene for prosjektet.</p>
+      </div>
+
+      <div class="action">
+        <h3>Berekraftshandling</h3>
+        <p>Brukaren byter standard 18650-celle sjølv med ein Torx T10-skrutrekkar. Skalet kan opnast og lukkast att, materiala er ISO 11469-merka, og reservedelar skal finnast i minst 7 år. Målet er å auke levetida frå 5–10 år til over 12 år.</p>
+      </div>
+    </aside>
+
+  </section>
+
+  <footer class="foot">
+    <span>AHO · GK4 V26 · Modul 2 · Konseptgjennomgang 8. mai 2026 · Supplering november 2026</span>
+    <img src="../../../assets/reference/ikea/ikea_profile_004.webp" alt="IKEA">
+  </footer>
+
+</main>
+</body>
+</html>

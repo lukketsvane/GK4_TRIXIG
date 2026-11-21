@@ -2,6 +2,8 @@
 
 Organized project repository for the TRIXIG redesign work.
 
+Start med [`OVERSIKT.md`](OVERSIKT.md): krav, leveransar, kvar filene ligg og status for suppleringa.
+
 ## Structure
 
 - `docs/` - project writing, course material, reports, brand notes, and cleanup records.
