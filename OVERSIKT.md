@@ -57,7 +57,12 @@ assets/reference/ikea/                  IKEA-logo: ikea.svg til preging, webp-ve
 ## Andre stader
 
 - **Nettstaden** ([`lukketsvane/trixig.iverfinne.no`](https://github.com/lukketsvane/trixig.iverfinne.no)) har 3D-modellane til W1–W4 og originalen.
-- **Google Drive** (`My Drive/01 aho/GK4/GK4_TRIXIG`) har dei store arbeidsfilene, mellom anna Blender, Plasticity og USDZ. Kjeldefila til R1, `trixig_original_and_drafts.blend`, ligg i den synkroniserte PC-mappa `Desktop/3mf`.
+- **Google Drive** (`My Drive/01 aho/GK4/GK4_TRIXIG`) vart rydda 21. november. No ligg berre dette der:
+  - `Modellar/`: 3D-kjeldene `trixig_new_01`–`04.usdz` (truleg W1–W4) og `FERDIG+REDESIGN_01/02.usdz`, og 3D-modellane frå mai.
+  - `trixig fold/` og `trixig usdz/`: 3D-variantar i USDZ, GLB og STL.
+  - `Dokument/` og rota av mappa: debriefane og eigne dokument. `Debrief_Materiale/` har kjeldematerialet til debriefen.
+  - 534 filer (3,0 GB) ligg i papirkorga fram til om lag 21. desember. Alle hadde kopi i git-historikken, var duplikat eller var nedlasta referansar.
+  - Kjeldefila til R1, `trixig_original_and_drafts.blend`, ligg i den synkroniserte PC-mappa `Desktop/3mf`. Den mappa er ikkje rørt.
 - **Fusion 360** har den parametriske originalmodellen «IKEA TRIXIG 3.6 original» i prosjektet «IKEA Redesign GK4».
 
 ## Hente att sletta filer
