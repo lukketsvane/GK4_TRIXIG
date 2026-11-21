@@ -61,7 +61,7 @@ nose shaft at the `front_shell` junction (X < −178) rather than the fat gearbo
 
 ## Debossing
 
-Use repo **`ikea.svg`** (IKEA wordmark, viewBox 751×138, single path, #0058A3) — NOT the
+Use repo **`assets/reference/ikea/ikea.svg`** (IKEA wordmark, viewBox 751×138, single path, #0058A3) — NOT the
 in-scene grease-pencil `ikea.svg`. Per master: badge 38×13 mm R3.5 raised on +Y shell;
 wordmark 33 mm wide, debossed 0.4 mm, A-counter island preserved.
 

@@ -17,7 +17,7 @@ components/occurrences; insert this part into a separate assembly design if need
 3. **Strap pin** re-added on `Body_Back` (clip bail wraps it).
 4. **Badge + IKEA wordmark** — raised rounded-rect badge (38 × 13 mm, R3.5, ~0.7–1.3 mm
    proud, rim fillet R0.8) on the +Y shell at centre (−237, 110.8); wordmark debossed
-   0.4 mm from `ikea.svg` path data (33 mm wide, A-counter island preserved).
+   0.4 mm from `assets/reference/ikea/ikea.svg` path data (33 mm wide, A-counter island preserved).
    Sketches: `Badge_Outline`, `Wordmark`.
 5. **Fwd/rev rocker** — through-slot (9.4 × 5.2 pill) + `Switch_FwdRev` bar body
    (8.8 × 4.6 × 43, rounded ends) at scan position X −234.4…−225.6, Z 93.2…97.8.
