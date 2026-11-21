@@ -4,7 +4,8 @@ DC GEAR MOTOR (TRIXIG) - Fusion 360 modeling script
 
 Bygger TRIXIG-girmotoren som ein parametrisk rotasjonslekam i Fusion 360.
 Basert paa "DC GEAR MOTOR ASSEMBLY - REFERENCE DRAWING FOR 3D MODELING"
-(referansebilder/, mai 2026).
+(cad/original_trixig/foto/motor_referanseteikning.png, mai 2026).
+Skyvelaere-maala i cad/original_trixig/malefoto/ avvik noko; sjaa cad/original_trixig/README.md.
 
 KOEYRING I FUSION 360:
   1. Open Fusion 360.

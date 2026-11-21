@@ -29,7 +29,7 @@ master is untouched — work was done on a duplicate `prep_shell_solid`).
 
 ## Internal components (proxies fitted; full meshes exist on disk)
 
-From documented caliper teardown (`assets/reference/teardown/`,
+From documented caliper teardown (`cad/original_trixig/malefoto/`,
 `trixig_motor_girmodul.py`, `trixig_pcb_battery_blender.py`):
 
 - **Motor/gearbox** (total 106.4 mm) on the drive axis: can Ø32×47 → gearbox Ø35×32.4 →
@@ -38,9 +38,8 @@ From documented caliper teardown (`assets/reference/teardown/`,
   Stands raked in the handle: motor-wire end ≈ (−105, 0, 90), **USB-C end at the base**
   ≈ (−45, 0, 12); axis dir (0.61, 0, −0.79), board normal (0.79, 0, 0.61).
 - Faithful meshes if needed: `cad/original_trixig/komponentar/pcb_battery_asset/trixig_pcb_battery_scaled.obj`
-  and `cad/original_trixig/komponentar/motor_girkasse_malt.stl`. (The print files
-  `for_bambu/{motor_gear_module,pcba_board}.stl` are misnamed: they are the trigger and the
-  top panel. See `cad/original_trixig/README.md`.)
+  and `cad/original_trixig/komponentar/motor_girkasse_malt.stl`. The caliper photos differ
+  somewhat from these model values; see the table in `cad/original_trixig/README.md`.
 
 ## Screw system — 5 bosses (final, user-reviewed)
 

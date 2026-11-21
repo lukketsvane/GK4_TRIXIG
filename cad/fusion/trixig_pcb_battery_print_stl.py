@@ -17,12 +17,9 @@ import bpy
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 ASSET_DIR = SCRIPT_DIR.parent / "original_trixig" / "komponentar" / "pcb_battery_asset"
-PRINT_DIR = SCRIPT_DIR.parent / "print" / "trixig_redesign" / "for_bambu"
 ASSET_DIR.mkdir(parents=True, exist_ok=True)
-PRINT_DIR.mkdir(parents=True, exist_ok=True)
 
 STL_PATH = ASSET_DIR / "trixig_pcb_battery_simplified_print_mm.stl"
-PRINT_STL_PATH = PRINT_DIR / "pcb_battery_simplified_print_mm.stl"
 BLEND_PATH = ASSET_DIR / "trixig_pcb_battery_simplified_print_mm.blend"
 
 
@@ -223,10 +220,8 @@ def main() -> None:
     objects = build_print_model()
     bpy.ops.wm.save_as_mainfile(filepath=str(BLEND_PATH))
     export_stl(objects, STL_PATH)
-    export_stl(objects, PRINT_STL_PATH)
     print("Simplified print STL generated:")
     print(f"  {STL_PATH}")
-    print(f"  {PRINT_STL_PATH}")
     print(f"  {BLEND_PATH}")
 
 

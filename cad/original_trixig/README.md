@@ -10,6 +10,8 @@ Dette er dei CAD-modellerte delane frå den demonterte originalen, samla på éi
 
 - `delar/`: 20 delar som STL i millimeter, i samanstillingsposisjon. Importer dei samla, så passar dei i hop.
 - `komponentar/`: motor, girkasse, kretskort og celle, modellerte frå skyvelære-mål i eigne koordinatar.
+- `malefoto/`: skyvelære-fotoa som måla kjem frå.
+- `foto/`: foto av originalen, innmaten og innfestingane.
 - `delar_oversikt.png` og `samanstilling_rontgen.png`: oversiktsbileta over.
 
 ## Kjelde
@@ -54,7 +56,7 @@ Måla er storleiken på delen i samanstillinga, som lengd (X) × høgd (Y) × br
 | Fil | Komponent | Mål (mm) | Laga med |
 |---|---|---|---|
 | `motor_girkasse_malt.stl` | Motor og girkasse | Motor Ø32 × 47, girkasse Ø35 × 35,4 (inkl. frontboss Ø18 × 3), aksel Ø10 × 24. Totalt 106,4 | [`cad/fusion/trixig_motor_girmodul.py`](../fusion/trixig_motor_girmodul.py) |
-| `pcb_battery_asset/` | Kretskort med 18650-celle, i Blender, GLB, OBJ og STL | Kretskort 95,39 × 26,31 × 1,60, celle Ø18,60 × 65,02 | [`trixig_pcb_battery_blender.py`](../fusion/trixig_pcb_battery_blender.py) og [`trixig_pcb_battery_print_stl.py`](../fusion/trixig_pcb_battery_print_stl.py) |
+| `pcb_battery_asset/` | Kretskort med 18650-celle, i Blender og OBJ, og ei forenkla STL for prøvepassing | Kretskort 95,39 × 26,31 × 1,60, celle Ø18,60 × 65,02 | [`trixig_pcb_battery_blender.py`](../fusion/trixig_pcb_battery_blender.py) og [`trixig_pcb_battery_print_stl.py`](../fusion/trixig_pcb_battery_print_stl.py) |
 
 ## Hovudmål for originalen
 
@@ -65,23 +67,39 @@ Kjelde: [`cad/fusion/trixig_cad_rebuild_notes.md`](../fusion/trixig_cad_rebuild_
 - **Grepet:** ovalt, 44,4 × 33,0 mm, og skråstilt om lag 17–19° frå loddrett.
 - **Skalet:** veggtjukkleik 1,6 mm.
 
-## Printfilene i `cad/print/trixig_redesign/for_bambu/`
+## Skyvelære-måla i `malefoto/`
 
-Dei same delane ligg der som printfiler, men fleire filnamn er feil, og skalet er ufullstendig. Bruk filene i denne mappa når du modellerer.
+Fotoa er dei einaste primærkjeldene til måla på motor og kretskort. Fleire avlesingar avvik frå verdiane i skripta og i `komponentar/`. Sjekk mot den fysiske delen før du modellerer tette passingar.
 
-| Fil i `for_bambu/` | Tilsvarar |
+| Foto | Avlesing (mm) | Kva som er målt | Verdi i modellen |
+|---|---|---|---|
+| `motor_01.png` | 10,64 | Diameter på akselen | Ø10,0 |
+| `motor_02.png` | 32,10 | Truleg diameter på girkassa ved motoren* | (ikkje modellert) |
+| `motor_03.png` | 22,03 | Truleg lengda på frontparti og aksel* | – |
+| `motor_04.png` | 33,36 | Truleg lengda frå girkasseskuldra til akselspissen* | – |
+| `motor_05.png` | 18,17 | Diameter på frontbossen | Ø18,0 |
+| `motor_06.png` | 35,40 | Største diameter på girkassa | Ø35,0 |
+| `motor_07.png` | 106,08 | Total lengd, motor og girkasse | 106,4 |
+| `motor_08.png` | 32,41 | Truleg diameter på girkassekroppen* | (ikkje modellert) |
+| `motor_09.png` | 30,83 | Diameter på motorhuset | Ø32,0 |
+| `motor_10.png` | 37,14 | Truleg lengda på motorhuset* | – |
+| `motor_11.png` | 15,03 | Diameter på halsen mellom frontboss og aksel | (ikkje modellert) |
+| `motor_12.png` | 47,01 | Lengd frå motorbakkant til girkassa | 47,0 |
+| `pcb_og_batteri_01.png` | 65,82 | Lengda på 18650-cella | 65,02 |
+| `pcb_og_batteri_02.png` | 20,02 | Tjukkleik på kretskort og celle saman | ≈20,2 |
+| `pcb_og_batteri_03.png` | 95,39 | Lengda på kretskortet | 95,39 |
+| `pcb_og_batteri_04.png` | 25,31 | Breidda på kretskortet | 26,31 (truleg tastefeil) |
+
+\* Kva som er målt, er tolka ut frå fotoet og ikkje stadfesta.
+
+## Foto i `foto/`
+
+| Fil | Viser |
 |---|---|
-| `motor_gear_module.stl` | Avtrekkaren |
-| `pcba_board.stl` | Toppanelet |
-| `internal_wire.stl` | Retningsbrytaren |
-| `shaft_collar_assy.stl` | Bitshaldaren |
-| `front_end_cap.stl` | Lysleiaren for tre LED-ar |
-| `rear_end_cap.stl` | Linsa under nasen |
-| `bit_holder_cover.stl` | Innlegget i bitshaldaren |
-| `direction_switch.stl` | Detaljen i toppanelet |
-| `trigger_button.stl` | Truleg USB-C-kontakten (litt andre mål) |
-| `lanyard_strap.stl`, `screw_m3x12_01`–`06.stl` | Stroppen og skruene (rette namn) |
-| `pcb_battery_simplified_print_mm.stl` | Forenkla kretskort med celle (rett namn) |
-| `housing_bottom_grip.stl` | Ei skalhalvdel utan nase (135,9 mm lang) |
-| `housing_bottom_tip.stl`, `housing_top_tip.stl` | Øydelagde fragment |
-| `housing_top_grip.stl` | Tom fil |
+| `original_produktfoto.jpg` | IKEA sitt produktfoto av originalen |
+| `innmat_ovanfra.jpg` | Motor, girkasse og kretskort med celle på plass i det opne skalet |
+| `innmat_perspektiv.jpeg` | Same innmat sett skrått |
+| `demonterte_skalhalvdelar.jpeg` | Begge skalhalvdelane, med vogga for motoren, avtrekkar med fjør, skruer og stropp |
+| `batteriinnfesting.jpeg` | Korleis kretskortet og cella er festa i grepet, med lysleiaren og avtrekkaren |
+| `kretskort_komponentside.jpg` | Komponentsida av kretskortet, med brytar og leidningar |
+| `motor_referanseteikning.png` | Referanseteikninga motorskriptet byggjer på. Ho er laga med KI, og måla hennar er runda av. Bruk skyvelære-måla over |
